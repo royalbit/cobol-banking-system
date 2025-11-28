@@ -1,0 +1,71 @@
+# COBOL Banking System Migration - Current Sprint
+
+metadata:
+  sprint: "v0.1.0 - Core Migration"
+  started: "2025-11-27"
+  status: ready
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CURRENT MILESTONE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+current:
+  milestone: "Migrate BANKACCT.cob to Java Spring Boot"
+  status: ready
+  priority: HIGH
+
+  scope: |
+    Migrate the COBOL banking system (BANKACCT.cob) to a modern Java
+    Spring Boot application with full test coverage proving behavioral
+    equivalence.
+
+  deliverables:
+    - "Customer.java - Domain model from CUSTOMER-RECORD"
+    - "Transaction.java - Domain model from TRANSACTION-RECORD"
+    - "AccountService.java - Business logic from PROCEDURE DIVISION"
+    - "CustomerRepository.java - Persistence layer"
+    - "TransactionRepository.java - Transaction logging"
+    - "JUnit tests for all operations"
+    - "All tests passing, zero warnings"
+    - "Git tagged release v0.1.0"
+
+  acceptance_criteria:
+    - "Java code compiles with zero warnings"
+    - "All JUnit tests pass"
+    - "Create account works"
+    - "Deposit increases balance correctly"
+    - "Withdrawal decreases balance (with insufficient funds check)"
+    - "Interest calculation matches COBOL (2% annual)"
+    - "Mini statement returns last 5 transactions"
+
+  cobol_paragraphs_to_migrate:
+    - paragraph: "CREATE-ACCOUNT"
+      java_method: "AccountService.createAccount()"
+      tests_required: ["create new account", "verify persisted"]
+
+    - paragraph: "DEPOSIT-MONEY / UPDATE-BALANCE-ADD"
+      java_method: "AccountService.deposit()"
+      tests_required: ["deposit increases balance", "transaction logged"]
+
+    - paragraph: "WITHDRAW-MONEY / UPDATE-BALANCE-SUBTRACT"
+      java_method: "AccountService.withdraw()"
+      tests_required: ["withdraw decreases balance", "insufficient funds rejected", "transaction logged"]
+
+    - paragraph: "APPLY-INTEREST"
+      java_method: "AccountService.applyInterest()"
+      tests_required: ["2% interest on savings only", "checking accounts unchanged"]
+
+    - paragraph: "MINI-STATEMENT"
+      java_method: "AccountService.getMiniStatement()"
+      tests_required: ["returns last 5 transactions", "filtered by account"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DONE WHEN
+# ═══════════════════════════════════════════════════════════════════════════════
+
+done_when:
+  - "./mvnw test shows BUILD SUCCESS"
+  - "./mvnw compile shows BUILD SUCCESS"
+  - "git tag v0.1.0 exists"
+  - "All COBOL business logic preserved in Java"
+  - "README updated with migration notes"

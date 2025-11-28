@@ -1,0 +1,114 @@
+# COBOL Banking System Migration - Forge Protocol
+# Demonstrating SKYNET MODE for legacy modernization
+
+metadata:
+  project: "cobol-banking-system"
+  version: "0.0.0"
+  purpose: "Migrate COBOL banking system to Java Spring Boot"
+  forked_from: "github.com/ak55m/cobol-banking-system"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SKYNET MODE RULES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+session_rules:
+  max_duration: "4 hours"
+  max_milestones: 1
+  must_ship: true
+
+  triggers:
+    - "run warmup"
+    - "go"
+    - "punch it"
+    - "hit it"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# QUALITY GATES - NOTHING SHIPS WITHOUT THESE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+quality_gates:
+  required_before_commit:
+    - command: "./mvnw test"
+      expect: "BUILD SUCCESS"
+      description: "All JUnit tests must pass"
+
+    - command: "./mvnw compile"
+      expect: "BUILD SUCCESS"
+      description: "Java code must compile"
+
+  failure_action: "Fix issues before committing. Do not skip gates."
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PROJECT CONTEXT
+# ═══════════════════════════════════════════════════════════════════════════════
+
+project_context:
+  description: |
+    This is a COBOL to Java migration project. The source COBOL program
+    (BANKACCT.cob) is a banking system with:
+    - Customer account management
+    - Deposits and withdrawals
+    - Interest calculation for savings accounts
+    - Transaction logging and mini statements
+    - File-based persistence (CUSTOMERS.DAT, TRANSACTIONS.DAT)
+
+  source_cobol: "BANKACCT.cob"
+  source_lines: 389
+
+  cobol_features:
+    - "FILE-CONTROL with LINE SEQUENTIAL organization"
+    - "WORKING-STORAGE for state management"
+    - "PROCEDURE DIVISION with PERFORM loops"
+    - "File I/O: OPEN, READ, WRITE, REWRITE, CLOSE"
+    - "EVALUATE for menu dispatch"
+    - "Decimal arithmetic (PIC 9(7)V99)"
+
+  target_stack:
+    language: "Java 17"
+    framework: "Spring Boot 3.x"
+    build: "Maven"
+    testing: "JUnit 5"
+    persistence: "In-memory (H2) or file-based"
+
+  migration_principles:
+    - "Preserve EXACT business logic from COBOL"
+    - "Map COBOL data structures to Java classes"
+    - "Convert COBOL paragraphs to Java methods"
+    - "Write JUnit tests proving behavioral equivalence"
+    - "Maintain same error handling semantics"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# COBOL TO JAVA MAPPING GUIDE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+cobol_java_mapping:
+  data_structures:
+    CUSTOMER-RECORD: "Customer.java (domain model)"
+    TRANSACTION-RECORD: "Transaction.java (domain model)"
+    WORKING-STORAGE: "Service internal state"
+
+  procedures:
+    CREATE-ACCOUNT: "AccountService.createAccount()"
+    VIEW-ACCOUNTS: "AccountService.getAllAccounts()"
+    DEPOSIT-MONEY: "AccountService.deposit()"
+    WITHDRAW-MONEY: "AccountService.withdraw()"
+    MINI-STATEMENT: "AccountService.getMiniStatement()"
+    APPLY-INTEREST: "AccountService.applyInterest()"
+    UPDATE-BALANCE-ADD: "Internal helper method"
+    UPDATE-BALANCE-SUBTRACT: "Internal helper method"
+    LOG-TRANSACTION-*: "TransactionService.log*()"
+
+  file_operations:
+    CUSTOMERS_DAT: "CustomerRepository (in-memory or JPA)"
+    TRANSACTIONS_DAT: "TransactionRepository (in-memory or JPA)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ON CONFUSION - READ THIS IF LOST
+# ═══════════════════════════════════════════════════════════════════════════════
+
+on_confusion: |
+  1. Re-read this file (warmup.yaml)
+  2. Check sprint.yaml for current milestone
+  3. Look at BANKACCT.cob for the source logic
+  4. Run: ./mvnw test (must pass before any commit)
+  5. Your job: Migrate COBOL to Java, tests pass, ship it

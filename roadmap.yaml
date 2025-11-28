@@ -1,0 +1,69 @@
+# COBOL Banking System Migration - Roadmap
+
+metadata:
+  current_version: "0.0.0"
+  target_version: "1.0.0"
+  last_updated: "2025-11-27"
+  philosophy: "Governed AI migration - bounded sessions, quality gates, zero rework"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MIGRATION PHASES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+current:
+  version: "0.1.0"
+  status: ready
+  summary: "Core Migration - COBOL to Java"
+  goal: MIGRATION
+  priority: HIGH
+  features:
+    - "Domain models: Customer.java, Transaction.java"
+    - "Business logic: AccountService.java"
+    - "Persistence: In-memory repositories"
+    - "Full JUnit test coverage"
+    - "Behavioral equivalence with COBOL"
+
+next:
+  version: "0.2.0"
+  status: planned
+  summary: "REST API Layer"
+  goal: MODERNIZATION
+  priority: HIGH
+  features:
+    - "Spring Boot REST controllers"
+    - "OpenAPI/Swagger documentation"
+    - "JSON request/response models"
+    - "Integration tests"
+
+future:
+  - version: "0.3.0"
+    status: planned
+    summary: "Database Persistence"
+    goal: PRODUCTION_READY
+    features:
+      - "JPA entities with H2/PostgreSQL"
+      - "Flyway migrations"
+      - "Transaction management"
+
+  - version: "1.0.0"
+    status: planned
+    summary: "Production Release"
+    goal: PRODUCTION_READY
+    features:
+      - "Docker containerization"
+      - "Health checks and metrics"
+      - "Production configuration"
+      - "Deployment documentation"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DEMO NOTE
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# This roadmap is for DEMO purposes. In a real migration:
+# - v0.1.0 would be one module, not the whole system
+# - Each milestone would be a bounded SKYNET MODE session
+# - Production readiness would require security review, performance testing, etc.
+#
+# The demo shows the PROCESS, not a complete production migration.
+#
+# ═══════════════════════════════════════════════════════════════════════════════
