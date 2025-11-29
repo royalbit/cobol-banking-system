@@ -153,13 +153,26 @@ To add new features:
 3. Add appropriate error handling and validation
 4. Update transaction logging if needed
 
-## Contributing
+## Contributing (AI-Only Development)
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Create a Pull Request
+**Pull Requests are disabled.** This is intentional.
+
+This project uses the **AI-Only Development Model** ([ADR-011](https://github.com/royalbit/forge-protocol/blob/main/docs/adr/011-ai-only-development-no-external-prs.md)).
+
+External PRs are an **attack vector for ethics bypass**. The trust model is:
+
+```
+Human Owner → AI (autonomous) → Tests Pass → Direct Commit → Main
+```
+
+### How to Contribute
+
+| Method | Description |
+|--------|-------------|
+| **[Issues](https://github.com/royalbit/cobol-banking-system/issues)** | Report bugs, request features |
+| **Fork** | Create your own version |
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## License
 
