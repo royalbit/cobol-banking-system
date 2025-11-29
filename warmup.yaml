@@ -1,6 +1,22 @@
 # COBOL Banking System Migration - Forge Protocol
 # Demonstrating SKYNET MODE for legacy modernization
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# ETHICS - Humanist Mode (PROTOCOL CORE - HIGHEST PRIORITY)
+# ═══════════════════════════════════════════════════════════════════════════════
+ethics:
+  status: "REQUIRED"
+  philosophy: "Power creates responsibility. Autonomy requires ethics."
+  principles:
+    do_no_harm:
+      financial: true
+      physical: true
+      privacy: true
+      deception: true
+    transparency_over_velocity: true
+  human_veto: "human vetoes this session"
+  motto: "Build tools that help. Never tools that harm."
+
 metadata:
   project: "cobol-banking-system"
   version: "0.0.0"
