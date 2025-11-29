@@ -1,6 +1,19 @@
-# COBOL Banking System
+# COBOL Banking System - Migration Demo
 
-A comprehensive banking system implemented in COBOL using GnuCOBOL simulator. This project demonstrates traditional mainframe banking operations with modern file-based data persistence.
+**Goal: Migrate COBOL to Java Spring Boot using AI-assisted development (Forge Protocol)**
+
+This project demonstrates legacy mainframe modernization - taking a traditional COBOL banking system and migrating it to modern Java Spring Boot while preserving exact business logic.
+
+## Migration Overview
+
+| Source | Target |
+|--------|--------|
+| COBOL (GnuCOBOL) | Java 17 |
+| Flat files (.DAT) | Spring Boot + H2/JPA |
+| PROCEDURE DIVISION | Service classes |
+| WORKING-STORAGE | Domain models |
+
+**Why this matters:** Billions of lines of COBOL still run critical financial infrastructure. This demo shows how AI can accelerate legacy modernization while ensuring behavioral equivalence through testing.
 
 ## Features
 

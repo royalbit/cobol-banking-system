@@ -17,11 +17,42 @@ ethics:
   human_veto: "human vetoes this session"
   motto: "Build tools that help. Never tools that harm."
 
-metadata:
+# ═══════════════════════════════════════════════════════════════════════════════
+# SELF-HEALING PROTOCOL - Based on REAL Compaction Data (ADR-003)
+# ═══════════════════════════════════════════════════════════════════════════════
+self_healing:
+  checkpoint_file: ".claude_checkpoint.yaml"
+
+  checkpoint_triggers:
+    - "Every major task completion"
+    - "Every 10-15 tool calls (~15 minutes of work)"
+    - "Before any file write >100 lines"
+    - "Before any commit"
+    - "On ANY confusion or uncertainty"
+
+  commit_cadence:
+    rule: "Commit at least every 15 minutes during active development"
+    why: "Each commit triggers forge-protocol refresh, injecting fresh context"
+    patterns:
+      - "Commit after every task completion, even if small"
+      - "Small commits > large commits (for self-healing)"
+      - "WIP commits are OK - squash later if needed"
+
+  on_confusion: "STOP → re-read warmup.yaml → re-read .claude_checkpoint.yaml"
+
+  confusion_signals:
+    - "Unsure about project rules"
+    - "Forgot what milestone we're working on"
+    - "Making decisions that contradict protocol"
+    - "About to scope creep ('let me also...', 'while I'm here...')"
+
+identity:
   project: "cobol-banking-system"
+  tagline: "COBOL to Java Migration Demo"
   version: "0.0.0"
-  purpose: "Migrate COBOL banking system to Java Spring Boot"
+  goal: "Migrate COBOL banking system to Java Spring Boot using AI-assisted development"
   forked_from: "github.com/ak55m/cobol-banking-system"
+  why: "Billions of lines of COBOL run critical financial infrastructure. This demonstrates AI-accelerated legacy modernization."
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SKYNET MODE RULES

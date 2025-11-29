@@ -1,5 +1,8 @@
 # COBOL Banking System Migration
 
+@warmup.yaml
+@ethics.yaml
+
 ON CONFUSION → re-read warmup.yaml + sprint.yaml
 
 Rules: 4hr max, 1 milestone, tests pass, ship it.
