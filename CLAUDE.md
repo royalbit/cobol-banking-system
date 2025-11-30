@@ -1,22 +1,12 @@
-# COBOL Banking System Migration
+# COBOL Banking System
 
 @warmup.yaml
 @ethics.yaml
 
-ON CONFUSION → re-read warmup.yaml + sprint.yaml
-
 Rules: 4hr max, 1 milestone, tests pass, ship it.
 
-## Recovery Commands
+ON SESSION START: Immediately read roadmap.yaml, run `asimov-mode validate`, present next milestone. Do NOT wait for user prompt.
 
 ```bash
-./mvnw test                   # Must pass
-./mvnw checkstyle:check       # Zero warnings
+./gradlew test && ./gradlew check
 ```
-
-## Key Files
-
-- `warmup.yaml` - Full protocol
-- `sprint.yaml` - Current milestone
-- `roadmap.yaml` - Migration phases
-- `BANKACCT.cob` - Source COBOL (DO NOT MODIFY)
