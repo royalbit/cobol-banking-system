@@ -1,6 +1,6 @@
 # COBOL Banking System - Migration Demo
 
-**Goal: Migrate COBOL to Java Spring Boot using AI-assisted development (Asimov Protocol)**
+**Goal: Migrate COBOL to Java Spring Boot using AI-assisted development (RoyalBit Asimov)**
 
 This project demonstrates legacy mainframe modernization - taking a traditional COBOL banking system and migrating it to modern Java Spring Boot while preserving exact business logic.
 
