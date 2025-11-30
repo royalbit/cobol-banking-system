@@ -1,6 +1,6 @@
 # Contributing to COBOL Banking System
 
-This project uses the **Forge Protocol AI-Only Development Model** ([ADR-011](https://github.com/royalbit/forge-protocol/blob/main/docs/adr/011-ai-only-development-no-external-prs.md)).
+This project uses the **Asimov Protocol AI-Only Development Model** ([ADR-011](https://github.com/royalbit/asimov-protocol/blob/main/docs/adr/011-ai-only-development-no-external-prs.md)).
 
 ## How to Contribute
 
@@ -11,7 +11,7 @@ This project uses the **Forge Protocol AI-Only Development Model** ([ADR-011](ht
 
 ## Why No Pull Requests?
 
-This project is developed by an autonomous AI following the Forge Protocol. External PRs are an attack vector that could bypass ethics safeguards.
+This project is developed by an autonomous AI following the Asimov Protocol. External PRs are an attack vector that could bypass ethics safeguards.
 
 **Trust Model:**
 ```
@@ -24,6 +24,6 @@ When AI implements your idea from an Issue, you'll be credited in the commit mes
 
 ## For Forks
 
-Forks are encouraged! See the [Forge Protocol](https://github.com/royalbit/forge-protocol) for details.
+Forks are encouraged! See the [Asimov Protocol](https://github.com/royalbit/asimov-protocol) for details.
 
 Thank you for understanding!

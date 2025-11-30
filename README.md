@@ -1,6 +1,6 @@
 # COBOL Banking System - Migration Demo
 
-**Goal: Migrate COBOL to Java Spring Boot using AI-assisted development (Forge Protocol)**
+**Goal: Migrate COBOL to Java Spring Boot using AI-assisted development (Asimov Protocol)**
 
 This project demonstrates legacy mainframe modernization - taking a traditional COBOL banking system and migrating it to modern Java Spring Boot while preserving exact business logic.
 
@@ -170,7 +170,7 @@ To add new features:
 
 **Pull Requests are disabled.** This is intentional.
 
-This project uses the **AI-Only Development Model** ([ADR-011](https://github.com/royalbit/forge-protocol/blob/main/docs/adr/011-ai-only-development-no-external-prs.md)).
+This project uses the **AI-Only Development Model** ([ADR-011](https://github.com/royalbit/asimov-protocol/blob/main/docs/adr/011-ai-only-development-no-external-prs.md)).
 
 External PRs are an **attack vector for ethics bypass**. The trust model is:
 
