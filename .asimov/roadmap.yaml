@@ -12,28 +12,17 @@ metadata:
 
 current:
   version: "0.1.0"
-  status: ready
+  status: in_progress
   summary: "Core Migration - COBOL to Java"
   goal: MIGRATION
-  priority: HIGH
-  features:
-    - "Domain models: Customer.java, Transaction.java"
-    - "Business logic: AccountService.java"
-    - "Persistence: In-memory repositories"
-    - "Full JUnit test coverage"
-    - "Behavioral equivalence with COBOL"
 
 next:
-  version: "0.2.0"
-  status: planned
-  summary: "REST API Layer"
-  goal: MODERNIZATION
-  priority: HIGH
-  features:
-    - "Spring Boot REST controllers"
-    - "OpenAPI/Swagger documentation"
-    - "JSON request/response models"
-    - "Integration tests"
+  - version: "0.2.0"
+    summary: "REST API Layer"
+    goal: MODERNIZATION
+  - version: "0.3.0"
+    summary: "Database Persistence"
+    goal: PRODUCTION_READY
 
 future:
   - version: "0.3.0"

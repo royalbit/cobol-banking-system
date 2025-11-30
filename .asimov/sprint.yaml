@@ -1,9 +1,9 @@
 # COBOL Banking System Migration - Current Sprint
 
-metadata:
-  sprint: "v0.1.0 - Core Migration"
+sprint:
+  current: "v0.1.0 - Core Migration"
   started: "2025-11-27"
-  status: ready
+  status: in_progress
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CURRENT MILESTONE
