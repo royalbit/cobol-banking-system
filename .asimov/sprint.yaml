@@ -2,51 +2,41 @@
 # https://github.com/royalbit/asimov-protocol
 
 sprint:
-  current: "v0.1.0 - Domain models & test fixtures"
+  current: "v0.2.0 - Core banking operations"
   started: "2025-12-01"
   status: completed
 
   tasks:
-    - "[x] Analyze COBOL data structures (BANKACCT.cob)"
-    - "[x] Parse .DAT file formats (CUSTOMERS.DAT, TRANSACTIONS.DAT)"
-    - "[x] Create Java project scaffold (Spring Boot 3.2, Java 17)"
-    - "[x] Create domain models (Account, Transaction)"
-    - "[x] Create enums (AccountType, AccountStatus, TransactionType)"
-    - "[x] Create JPA repositories"
-    - "[x] Create test fixtures from COBOL data"
-    - "[x] Build equivalence test harness"
-    - "[x] All 33 tests passing"
+    - "[x] Create BankingService with core operations"
+    - "[x] Implement account CRUD (create, view, soft delete)"
+    - "[x] Implement deposit with active account validation"
+    - "[x] Implement withdrawal with overdraft prevention"
+    - "[x] Add transaction logging (D/W/I/X types)"
+    - "[x] Apply interest to savings accounts (2%)"
+    - "[x] Write equivalence tests vs COBOL behavior"
+    - "[x] All 60 tests passing"
 
   blockers: []
 
   notes: |
-    Milestone v0.1.0 complete. Java project structure:
+    Milestone v0.2.0 complete. BankingService implements all COBOL operations:
 
-    java-banking/
-    ├── src/main/java/com/royalbit/banking/
-    │   ├── BankingApplication.java
-    │   ├── domain/
-    │   │   ├── Account.java
-    │   │   ├── AccountStatus.java
-    │   │   ├── AccountType.java
-    │   │   ├── Transaction.java
-    │   │   └── TransactionType.java
-    │   └── repository/
-    │       ├── AccountRepository.java
-    │       └── TransactionRepository.java
-    └── src/test/java/com/royalbit/banking/
-        ├── TestFixtures.java
-        ├── EquivalenceTest.java
-        └── domain/
-            ├── AccountTest.java
-            └── TransactionTest.java
+    COBOL → Java mapping:
+    - CREATE-ACCOUNT → createAccount()
+    - VIEW-ACCOUNTS → getAllAccounts()
+    - DEPOSIT-MONEY → deposit() + logTransaction(DEPOSIT)
+    - WITHDRAW-MONEY → withdraw() + logTransaction(WITHDRAWAL)
+    - APPLY-INTEREST → applyInterest() + logTransaction(INTEREST)
+    - DELETE (soft) → deleteAccount() + logTransaction(DELETE)
 
-    COBOL → Java mapping verified:
-    - ACCT-ID PIC X(10) → String accountId
-    - NAME PIC X(30) → String customerName
-    - BALANCE PIC 9(7)V99 → BigDecimal balance
-    - ACCT-TYPE PIC X(1) → AccountType enum (S/C)
-    - STATUS → AccountStatus enum (A/I)
-    - TRANS-TYPE PIC X(1) → TransactionType enum (D/W/I/X)
+    Validation matches COBOL:
+    - Overdraft prevention: IF BALANCE >= WS-AMOUNT
+    - Inactive account rejection
+    - Name padding to 30 chars (PIC X(30))
 
-    Ready for v0.2.0: Core banking operations.
+    Test coverage:
+    - 27 new service tests
+    - 33 domain/fixture tests
+    - Total: 60 tests passing
+
+    Ready for v0.3.0: Transaction logging & mini statements.
