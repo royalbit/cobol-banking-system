@@ -8,18 +8,18 @@
 # RULE: Commit and push after every version is completed
 
 current:
-  version: "0.4.0"
+  version: "0.5.0"
   status: released
-  summary: "REST API endpoints"
-  goal: "API_READY"
+  summary: "Modern Web UI (Vue 3 + Tailwind)"
+  goal: "MODERNIZATION"
   deliverables:
-    - "[x] Spring Boot REST controllers"
-    - "[x] Account endpoints (CRUD, deposit, withdraw)"
-    - "[x] Transaction endpoints (history, mini-statement)"
-    - "[x] OpenAPI/Swagger documentation"
-    - "[x] Unit tests (80% coverage minimum)"
-    - "[x] Integration tests (API endpoint testing)"
-    - "[x] 96 tests passing"
+    - "[x] Vue 3 + Vite + Tailwind CSS v4"
+    - "[x] Dashboard with account overview"
+    - "[x] Account detail with transactions"
+    - "[x] Deposit/Withdraw forms"
+    - "[x] Mini statement view"
+    - "[x] Component tests (Vitest) - 29 tests"
+    - "[x] E2E tests (Playwright) - 14 tests"
 
 completed:
   - version: "0.1.0"
@@ -46,20 +46,18 @@ completed:
       - "[x] Date/time formatting (COBOL style)"
       - "[x] 74 equivalence tests passing"
 
-next:
-
-  - version: "0.5.0"
-    summary: "Modern Web UI (Vue 3 + Tailwind)"
-    goal: "MODERNIZATION"
+  - version: "0.4.0"
+    summary: "REST API endpoints"
     deliverables:
-      - "Vue 3 + Vite + Tailwind CSS"
-      - "Dashboard with account overview"
-      - "Transaction history with filtering"
-      - "Deposit/Withdraw forms"
-      - "Mini statement view"
-      - "Component tests (Vitest)"
-      - "E2E tests (Playwright)"
+      - "[x] Spring Boot REST controllers"
+      - "[x] Account endpoints (CRUD, deposit, withdraw)"
+      - "[x] Transaction endpoints (history, mini-statement)"
+      - "[x] OpenAPI/Swagger documentation"
+      - "[x] Unit tests (80% coverage minimum)"
+      - "[x] Integration tests (API endpoint testing)"
+      - "[x] 96 tests passing"
 
+next:
   - version: "1.0.0"
     summary: "Production-ready release"
     goal: "PRODUCTION"
