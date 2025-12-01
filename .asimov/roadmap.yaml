@@ -102,7 +102,21 @@ completed:
       - "[x] Postman collection for API testing"
       - "[x] API documentation updates"
 
-next: []
+next:
+  - version: "1.5.0"
+    summary: "COBOL Functional Equivalence Testing"
+    goal: "VERIFICATION"
+    deliverables:
+      - "Comprehensive equivalence tests against BANKACCT.cob specification"
+      - "Deposit: verify balance update matches COBOL arithmetic (PIC 9(7)V99)"
+      - "Withdraw: verify insufficient funds rejection matches COBOL behavior"
+      - "Interest: verify 2% calculation precision (COMPUTE WS-AMOUNT = BALANCE * 0.02)"
+      - "Transaction logging: verify D/W/I codes and date/time format"
+      - "Create account: verify COBOL field lengths (ID=10, NAME=30, TYPE=1)"
+      - "Mini statement: verify exactly 5 transaction limit"
+      - "Edge cases: zero balance, max balance (9999999.99), negative prevention"
+      - "Scenario replay: multi-operation sequences with final state verification"
+      - "ADR-005: COBOL Equivalence Testing Strategy"
 
 backlog:
   - "Authentication & authorization (JWT)"
