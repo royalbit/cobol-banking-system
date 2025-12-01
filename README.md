@@ -8,12 +8,48 @@ This project demonstrates legacy mainframe modernization - taking a traditional 
 
 | Source | Target |
 |--------|--------|
-| COBOL (GnuCOBOL) | Java 17 |
-| Flat files (.DAT) | Spring Boot + H2/JPA |
+| COBOL (GnuCOBOL) | Java 17 + Spring Boot 3.x |
+| Flat files (.DAT) | H2 Database + JPA |
 | PROCEDURE DIVISION | Service classes |
 | WORKING-STORAGE | Domain models |
+| Console UI | Vue 3 + Tailwind CSS |
 
 **Why this matters:** Billions of lines of COBOL still run critical financial infrastructure. This demo shows how AI can accelerate legacy modernization while ensuring behavioral equivalence through testing.
+
+## Quick Start (Docker)
+
+The fastest way to run the complete system:
+
+```bash
+# Clone and start
+git clone https://github.com/royalbit/cobol-banking-system.git
+cd cobol-banking-system
+docker-compose up --build
+
+# Access the application
+# Frontend: http://localhost:3000
+# Backend API: http://localhost:8080/api
+# Swagger UI: http://localhost:8080/swagger-ui.html
+```
+
+## Development Setup
+
+### Backend (Java Spring Boot)
+
+```bash
+cd java-banking
+./gradlew bootRun
+# API available at http://localhost:8080
+```
+
+### Frontend (Vue 3)
+
+```bash
+cd frontend
+npm install
+npm run dev
+# UI available at http://localhost:3000
+```
 
 ## Features
 
@@ -30,63 +66,67 @@ This project demonstrates legacy mainframe modernization - taking a traditional 
 - **Data Validation**: Prevents overdrafts and transactions on inactive accounts
 
 ### Transaction Types
-- **DEP**: Deposits
-- **WTH**: Withdrawals  
-- **INT**: Interest payments
-- **DEL**: Account deletions
+- **DEPOSIT**: Deposits
+- **WITHDRAWAL**: Withdrawals
+- **INTEREST**: Interest payments
 
-## System Architecture
+## Architecture
 
 ### Technology Stack
-- **Language**: COBOL (GnuCOBOL simulator)
-- **Data Storage**: Flat files (.DAT format)
-- **Interface**: Interactive console application
-- **Platform**: Linux/Unix environments
+| Component | Technology |
+|-----------|------------|
+| Backend | Java 17, Spring Boot 3.x, JPA/Hibernate |
+| Database | H2 (in-memory, upgradeable to PostgreSQL) |
+| Frontend | Vue 3, Vite, Tailwind CSS v4 |
+| API Docs | OpenAPI 3.0 / Swagger UI |
+| Testing | JUnit 5, Vitest, Playwright |
+| Container | Docker, docker-compose |
 
-### Data Files
-- `CUSTOMERS.DAT`: Customer account information
-- `TRANSACTIONS.DAT`: Complete transaction history
-
-### File Structure
+### Project Structure
 ```
-COBOL-Banking-System/
-├── BANKACCT.cob          # Main COBOL source code
-├── setup.sh              # Environment setup and Python simulator
-├── run.sh                # Compilation and execution script
-├── cobc                  # COBOL compiler simulator
-├── CUSTOMERS.DAT         # Customer data (created at runtime)
-├── TRANSACTIONS.DAT      # Transaction log (created at runtime)
-└── README.md             # This file
+cobol-banking-system/
+├── java-banking/           # Spring Boot backend
+│   ├── src/main/java/      # Java source code
+│   ├── src/test/java/      # Unit & integration tests
+│   └── Dockerfile          # Backend container
+├── frontend/               # Vue 3 frontend
+│   ├── src/                # Vue components
+│   ├── e2e/                # Playwright E2E tests
+│   └── Dockerfile          # Frontend container
+├── cobol-legacy/           # Original COBOL source
+├── docker-compose.yml      # Container orchestration
+└── .asimov/                # RoyalBit Asimov protocol
 ```
 
-## Quick Start
+## API Endpoints
 
-### Prerequisites
-- Linux/Unix environment (Ubuntu/Debian recommended)
-- Bash shell
-- Python 3.x (automatically used for simulation)
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/accounts` | List all accounts |
+| GET | `/api/accounts/{id}` | Get account by ID |
+| POST | `/api/accounts` | Create new account |
+| DELETE | `/api/accounts/{id}` | Close account |
+| POST | `/api/accounts/{id}/deposit` | Deposit funds |
+| POST | `/api/accounts/{id}/withdraw` | Withdraw funds |
+| POST | `/api/accounts/apply-interest` | Apply 2% interest |
+| GET | `/api/accounts/{id}/transactions` | Transaction history |
+| GET | `/api/accounts/{id}/transactions/mini-statement` | Last 5 transactions |
 
-### Installation & Setup
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/cobol-banking-system.git
-   cd cobol-banking-system
-   ```
+## Testing
 
-2. Make scripts executable:
-   ```bash
-   chmod +x setup.sh run.sh
-   ```
+```bash
+# Backend tests (96 tests, 80%+ coverage)
+cd java-banking
+./gradlew test jacocoTestReport
 
-3. Run the setup:
-   ```bash
-   ./setup.sh
-   ```
+# Frontend component tests (29 tests)
+cd frontend
+npm test
 
-4. Start the banking system:
-   ```bash
-   ./run.sh
-   ```
+# Frontend E2E tests (14 tests)
+cd frontend
+npm run test:e2e
+```
 
 ## Usage Guide
 

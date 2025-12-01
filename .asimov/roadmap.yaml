@@ -8,18 +8,17 @@
 # RULE: Commit and push after every version is completed
 
 current:
-  version: "0.5.0"
+  version: "1.0.0"
   status: released
-  summary: "Modern Web UI (Vue 3 + Tailwind)"
-  goal: "MODERNIZATION"
+  summary: "Production-ready release"
+  goal: "PRODUCTION"
   deliverables:
-    - "[x] Vue 3 + Vite + Tailwind CSS v4"
-    - "[x] Dashboard with account overview"
-    - "[x] Account detail with transactions"
-    - "[x] Deposit/Withdraw forms"
-    - "[x] Mini statement view"
-    - "[x] Component tests (Vitest) - 29 tests"
-    - "[x] E2E tests (Playwright) - 14 tests"
+    - "[x] Docker containerization (docker-compose)"
+    - "[x] Nginx reverse proxy for frontend"
+    - "[x] Health checks and actuator endpoints"
+    - "[x] Demo data seeding (5 sample accounts)"
+    - "[x] Updated README with quick start guide"
+    - "[x] 139 total tests (96 backend + 29 component + 14 E2E)"
 
 completed:
   - version: "0.1.0"
@@ -57,14 +56,18 @@ completed:
       - "[x] Integration tests (API endpoint testing)"
       - "[x] 96 tests passing"
 
-next:
-  - version: "1.0.0"
-    summary: "Production-ready release"
-    goal: "PRODUCTION"
+  - version: "0.5.0"
+    summary: "Modern Web UI (Vue 3 + Tailwind)"
     deliverables:
-      - "Docker containerization"
-      - "Documentation & deployment guide"
-      - "Demo data seeding"
+      - "[x] Vue 3 + Vite + Tailwind CSS v4"
+      - "[x] Dashboard with account overview"
+      - "[x] Account detail with transactions"
+      - "[x] Deposit/Withdraw forms"
+      - "[x] Mini statement view"
+      - "[x] Component tests (Vitest) - 29 tests"
+      - "[x] E2E tests (Playwright) - 14 tests"
+
+next:
 
 backlog:
   - "Authentication & authorization (JWT)"
