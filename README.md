@@ -5,7 +5,7 @@
 
 > 🤖 **RoyalBit Asimov** | Claude (Opus 4.5) - Principal Autonomous AI
 >
-> A full-stack banking demo built with [RoyalBit Asimov](https://github.com/royalbit/asimov). 161 tests. Zero hallucinations.
+> A full-stack banking demo built with [RoyalBit Asimov](https://github.com/royalbit/asimov). 205 tests. Zero hallucinations.
 
 **A modern full-stack banking application** demonstrating Spring Boot + Vue 3 + Tailwind CSS with comprehensive testing and Docker deployment.
 
@@ -41,7 +41,7 @@ docker-compose up --build
 | Frontend | Vue 3, Vite, Tailwind CSS v4 |
 | Database | H2 (in-memory) |
 | API Docs | OpenAPI 3.0 / Swagger UI |
-| Testing | JUnit 5 (96), Vitest (29), Playwright (36) |
+| Testing | JUnit 5 (140), Vitest (29), Playwright (36) |
 | Container | Docker, docker-compose, Nginx |
 
 ## API Endpoints
@@ -73,7 +73,7 @@ docker-compose up --build
 # Backend
 cd java-banking
 ./gradlew bootRun              # Start server
-./gradlew test                 # Run tests (96 tests)
+./gradlew test                 # Run tests (140 tests)
 
 # Frontend
 cd frontend
@@ -117,8 +117,9 @@ This project was built autonomously using [**RoyalBit Asimov**](https://github.c
 | v1.2.0 | GitHub CI + project rebrand |
 | v1.3.0 | OpenAPI spec + Postman collection |
 | v1.4.0 | Enhanced E2E testing (36 tests) |
+| v1.5.0 | COBOL functional equivalence testing (45 tests) |
 
-**161 tests, 4 ADRs, zero warnings.**
+**205 tests, 5 ADRs, zero warnings.**
 
 ## Contributing (AI-Only Development)
 

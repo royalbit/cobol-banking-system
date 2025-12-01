@@ -9,15 +9,18 @@
 # RULE: Commit and push after every version is completed
 
 current:
-  version: "1.4.0"
+  version: "1.5.0"
   status: released
-  summary: "Enhanced E2E Testing"
-  goal: "QUALITY"
+  summary: "COBOL Functional Equivalence Testing"
+  goal: "VERIFICATION"
   deliverables:
-    - "[x] Full user journey tests (create account → transactions → statements)"
-    - "[x] Error handling scenarios (insufficient funds, validation)"
-    - "[x] Responsive/mobile viewport tests"
-    - "[x] 36 E2E tests total (22 new tests)"
+    - "[x] Comprehensive equivalence tests against BANKACCT.cob specification"
+    - "[x] Arithmetic precision tests (PIC 9(7)V99 matching)"
+    - "[x] Business rule tests (deposit, withdraw, interest)"
+    - "[x] Edge case tests (zero balance, max balance, insufficient funds)"
+    - "[x] Scenario replay tests (multi-operation sequences)"
+    - "[x] ADR-005: COBOL Equivalence Testing Strategy"
+    - "[x] 45 new tests (140 total backend tests)"
 
 completed:
   - version: "0.1.0"
@@ -102,21 +105,15 @@ completed:
       - "[x] Postman collection for API testing"
       - "[x] API documentation updates"
 
-next:
-  - version: "1.5.0"
-    summary: "COBOL Functional Equivalence Testing"
-    goal: "VERIFICATION"
+  - version: "1.4.0"
+    summary: "Enhanced E2E Testing"
     deliverables:
-      - "Comprehensive equivalence tests against BANKACCT.cob specification"
-      - "Deposit: verify balance update matches COBOL arithmetic (PIC 9(7)V99)"
-      - "Withdraw: verify insufficient funds rejection matches COBOL behavior"
-      - "Interest: verify 2% calculation precision (COMPUTE WS-AMOUNT = BALANCE * 0.02)"
-      - "Transaction logging: verify D/W/I codes and date/time format"
-      - "Create account: verify COBOL field lengths (ID=10, NAME=30, TYPE=1)"
-      - "Mini statement: verify exactly 5 transaction limit"
-      - "Edge cases: zero balance, max balance (9999999.99), negative prevention"
-      - "Scenario replay: multi-operation sequences with final state verification"
-      - "ADR-005: COBOL Equivalence Testing Strategy"
+      - "[x] Full user journey tests (create account → transactions → statements)"
+      - "[x] Error handling scenarios (insufficient funds, validation)"
+      - "[x] Responsive/mobile viewport tests"
+      - "[x] 36 E2E tests total (22 new tests)"
+
+next:
 
 backlog:
   - "Authentication & authorization (JWT)"

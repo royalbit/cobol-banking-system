@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2024-12-01
+
+### Added
+- COBOL functional equivalence testing (45 new backend tests)
+- Arithmetic precision tests (PIC 9(7)V99 matching)
+- Business rule equivalence (deposit, withdraw, interest)
+- Edge case tests (zero balance, max balance, insufficient funds)
+- Scenario replay tests (multi-operation sequences)
+- ADR-005: COBOL Equivalence Testing Strategy
+
+### Changed
+- Backend test count: 95 → 140
+- Total test count: 161 → 205
+
 ## [1.4.0] - 2024-12-01
 
 ### Added

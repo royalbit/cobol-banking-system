@@ -14,6 +14,7 @@ An ADR captures an important architectural decision made along with its context 
 | [002](002-vue-tailwind.md) | Use Vue 3 + Tailwind CSS | Accepted | 2024-12-01 |
 | [003](003-h2-database.md) | Use H2 In-Memory Database | Accepted | 2024-12-01 |
 | [004](004-docker-compose.md) | Use Docker Compose for Deployment | Accepted | 2024-12-01 |
+| [005](005-cobol-equivalence-testing.md) | COBOL Equivalence Testing Strategy | Accepted | 2024-12-01 |
 
 ## ADR Template
 

@@ -16,14 +16,15 @@ protocols:
 identity:
   project: "Java Banking System"
   tagline: "Full-stack banking demo with Spring Boot + Vue 3"
-  version: "1.4.0"
+  version: "1.5.0"
 
 mission:
   problem: "Demonstrating modern full-stack development patterns"
   solution: "Spring Boot + Vue 3 + Tailwind CSS with comprehensive testing"
   principles:
-    - "Test-driven: 139 tests across backend, component, and E2E"
-    - "Documentation-first: C4 diagrams, ADRs, guides"
+    - "Test-driven: 205 tests across backend, component, and E2E"
+    - "COBOL equivalence: 45 tests verifying functional parity"
+    - "Documentation-first: C4 diagrams, 5 ADRs, guides"
     - "Container-ready: Docker Compose deployment"
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -91,8 +92,8 @@ features:
 # QUALITY STANDARDS
 # ═══════════════════════════════════════════════════════════════════════════════
 quality:
-  backend: "./gradlew test (96 tests, 80%+ coverage)"
+  backend: "./gradlew test (140 tests, 80%+ coverage)"
   frontend: "npm test (29 component tests)"
   e2e: "npm run test:e2e (36 Playwright tests)"
-  total: "161 tests"
+  total: "205 tests"
   style: "Java: Google Style Guide, Vue: Composition API"
