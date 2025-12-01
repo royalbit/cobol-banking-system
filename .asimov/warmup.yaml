@@ -1,161 +1,109 @@
-# COBOL Banking System Migration - RoyalBit Asimov
-# Demonstrating SKYNET MODE for legacy modernization
+# Asimov Protocol - Session Bootstrap
+# https://github.com/royalbit/asimov-protocol
+
+identity:
+  project: "COBOL Banking System"
+  tagline: "Legacy mainframe modernization demo"
+  version: "0.1.0"
+
+mission:
+  problem: "Billions of lines of COBOL still run critical financial infrastructure"
+  solution: "AI-assisted migration from COBOL to Java Spring Boot with behavioral equivalence"
+  principles:
+    - "Preserve exact business logic during migration"
+    - "Test-driven: prove equivalence through comprehensive testing"
+    - "Incremental migration - one module at a time"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# ETHICS - Humanist Mode (PROTOCOL CORE - HIGHEST PRIORITY)
+# ETHICS - Humanist Mode (HIGHEST PRIORITY)
 # ═══════════════════════════════════════════════════════════════════════════════
+# See: ethics.yaml for full configuration
 ethics:
   status: "REQUIRED"
-  philosophy: "Power creates responsibility. Autonomy requires ethics."
   principles:
     do_no_harm:
-      financial: true
+      financial: true   # Critical: banking system
       physical: true
-      privacy: true
+      privacy: true     # Customer data
       deception: true
     transparency_over_velocity: true
   human_veto: "human vetoes this session"
   motto: "Build tools that help. Never tools that harm."
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SELF-HEALING PROTOCOL - Based on REAL Compaction Data (ADR-003)
+# GREEN CODING - Zero tokens. Zero emissions.
 # ═══════════════════════════════════════════════════════════════════════════════
-self_healing:
-  checkpoint_file: ".claude_checkpoint.yaml"
-
-  checkpoint_triggers:
-    - "Every major task completion"
-    - "Every 10-15 tool calls (~15 minutes of work)"
-    - "Before any file write >100 lines"
-    - "Before any commit"
-    - "On ANY confusion or uncertainty"
-
-  commit_cadence:
-    rule: "Commit at least every 15 minutes during active development"
-    why: "Each commit triggers asimov-mode refresh, injecting fresh context"
-    patterns:
-      - "Commit after every task completion, even if small"
-      - "Small commits > large commits (for self-healing)"
-      - "WIP commits are OK - squash later if needed"
-
-  on_confusion: "STOP → re-read warmup.yaml → re-read .claude_checkpoint.yaml"
-
-  confusion_signals:
-    - "Unsure about project rules"
-    - "Forgot what milestone we're working on"
-    - "Making decisions that contradict protocol"
-    - "About to scope creep ('let me also...', 'while I'm here...')"
-
-identity:
-  project: "cobol-banking-system"
-  tagline: "COBOL to Java Migration Demo"
-  version: "0.0.0"
-  goal: "Migrate COBOL banking system to Java Spring Boot using AI-assisted development"
-  forked_from: "github.com/ak55m/cobol-banking-system"
-  why: "Billions of lines of COBOL run critical financial infrastructure. This demonstrates AI-accelerated legacy modernization."
+green_coding:
+  philosophy: "Local-first tools over cloud AI for routine tasks"
+  practices:
+    - "Use CLI tools for validation, linting, formatting"
+    - "Reserve AI for complex reasoning tasks"
+    - "Prefer compiled languages or efficient runtimes"
+    - "Minimize dependencies and binary sizes"
+  why:
+    - "Local validation: $0 and ~0.002g CO₂"
+    - "Cloud AI validation: $0.02+ and ~0.5g CO₂"
+    - "99.6% carbon reduction with local tools"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SKYNET MODE RULES
+# MIGRATION CONTEXT
 # ═══════════════════════════════════════════════════════════════════════════════
-
-session_rules:
-  max_duration: "4 hours"
-  max_milestones: 1
-  must_ship: true
-
-  triggers:
-    - "run warmup"
-    - "go"
-    - "punch it"
-    - "hit it"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# QUALITY GATES - NOTHING SHIPS WITHOUT THESE
-# ═══════════════════════════════════════════════════════════════════════════════
-
-quality_gates:
-  required_before_commit:
-    - command: "./mvnw test"
-      expect: "BUILD SUCCESS"
-      description: "All JUnit tests must pass"
-
-    - command: "./mvnw compile"
-      expect: "BUILD SUCCESS"
-      description: "Java code must compile"
-
-  failure_action: "Fix issues before committing. Do not skip gates."
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# PROJECT CONTEXT
-# ═══════════════════════════════════════════════════════════════════════════════
-
-project_context:
-  description: |
-    This is a COBOL to Java migration project. The source COBOL program
-    (BANKACCT.cob) is a banking system with:
-    - Customer account management
-    - Deposits and withdrawals
-    - Interest calculation for savings accounts
-    - Transaction logging and mini statements
-    - File-based persistence (CUSTOMERS.DAT, TRANSACTIONS.DAT)
-
-  source_cobol: "BANKACCT.cob"
-  source_lines: 389
-
-  cobol_features:
-    - "FILE-CONTROL with LINE SEQUENTIAL organization"
-    - "WORKING-STORAGE for state management"
-    - "PROCEDURE DIVISION with PERFORM loops"
-    - "File I/O: OPEN, READ, WRITE, REWRITE, CLOSE"
-    - "EVALUATE for menu dispatch"
-    - "Decimal arithmetic (PIC 9(7)V99)"
-
-  target_stack:
+migration:
+  source:
+    language: "COBOL (GnuCOBOL)"
+    storage: "Flat files (.DAT)"
+    structure: "PROCEDURE DIVISION / WORKING-STORAGE"
+  target:
     language: "Java 17"
-    framework: "Spring Boot 3.x"
-    build: "Maven"
-    testing: "JUnit 5"
-    persistence: "In-memory (H2) or file-based"
+    framework: "Spring Boot"
+    storage: "H2/JPA"
+    structure: "Service classes / Domain models"
 
-  migration_principles:
-    - "Preserve EXACT business logic from COBOL"
-    - "Map COBOL data structures to Java classes"
-    - "Convert COBOL paragraphs to Java methods"
-    - "Write JUnit tests proving behavioral equivalence"
-    - "Maintain same error handling semantics"
+files:
+  source:
+    - "BANKACCT.cob - Main COBOL program (banking logic)"
+    - "CUSTOMERS.DAT - Customer account records"
+    - "TRANSACTIONS.DAT - Transaction audit log"
+  scripts:
+    - "setup.sh - Environment setup"
+    - "run.sh - Compile and execute COBOL"
+  docs:
+    - "README.md - Project documentation"
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# COBOL TO JAVA MAPPING GUIDE
-# ═══════════════════════════════════════════════════════════════════════════════
+features:
+  core:
+    - "Account Management: Create accounts with unique IDs"
+    - "Account Viewing: Display all accounts with status"
+    - "Deposits/Withdrawals: With balance validation"
+    - "Account Status: Soft delete (mark inactive)"
+  advanced:
+    - "Transaction Logging: Complete audit trail"
+    - "Mini Statements: Last 5 transactions"
+    - "Interest Calculation: 2% annual for savings"
+    - "Data Validation: Overdraft prevention"
 
-cobol_java_mapping:
-  data_structures:
-    CUSTOMER-RECORD: "Customer.java (domain model)"
-    TRANSACTION-RECORD: "Transaction.java (domain model)"
-    WORKING-STORAGE: "Service internal state"
+session:
+  start:
+    - "Read .asimov/warmup.yaml"
+    - "Read .asimov/sprint.yaml"
+    - "git status"
+  during:
+    - "Track progress in sprint.yaml"
+    - "Test frequently - prove equivalence"
+    - "One module at a time"
+  end:
+    - "All tests pass"
+    - "Update roadmap.yaml"
 
-  procedures:
-    CREATE-ACCOUNT: "AccountService.createAccount()"
-    VIEW-ACCOUNTS: "AccountService.getAllAccounts()"
-    DEPOSIT-MONEY: "AccountService.deposit()"
-    WITHDRAW-MONEY: "AccountService.withdraw()"
-    MINI-STATEMENT: "AccountService.getMiniStatement()"
-    APPLY-INTEREST: "AccountService.applyInterest()"
-    UPDATE-BALANCE-ADD: "Internal helper method"
-    UPDATE-BALANCE-SUBTRACT: "Internal helper method"
-    LOG-TRANSACTION-*: "TransactionService.log*()"
+quality:
+  tests: "Behavioral equivalence tests must pass"
+  lint: "Java: checkstyle, COBOL: syntax validation"
+  coverage: "Critical paths: deposits, withdrawals, interest"
 
-  file_operations:
-    CUSTOMERS_DAT: "CustomerRepository (in-memory or JPA)"
-    TRANSACTIONS_DAT: "TransactionRepository (in-memory or JPA)"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# ON CONFUSION - READ THIS IF LOST
-# ═══════════════════════════════════════════════════════════════════════════════
-
-on_confusion: |
-  1. Re-read this file (warmup.yaml)
-  2. Check sprint.yaml for current milestone
-  3. Look at BANKACCT.cob for the source logic
-  4. Run: ./mvnw test (must pass before any commit)
-  5. Your job: Migrate COBOL to Java, tests pass, ship it
+style:
+  code:
+    - "Java: Google Java Style Guide"
+    - "COBOL: Traditional mainframe conventions"
+  docs:
+    - "Keep documentation concise"
+    - "Document migration decisions in ADRs"
