@@ -1,10 +1,22 @@
-# Asimov Protocol - Session Bootstrap
+# Asimov Protocol - Project Context
 # https://github.com/royalbit/asimov-protocol
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PROTOCOL FILES (load these at session start)
+# ═══════════════════════════════════════════════════════════════════════════════
+protocols:
+  required:
+    - ".asimov/asimov.yaml"      # Three Laws of Robotics (ethics foundation)
+    - ".asimov/green.yaml"       # Sustainability (local-first tools)
+    - ".asimov/sycophancy.yaml"  # Anti-sycophancy (truth over comfort)
+  tracking:
+    - ".asimov/roadmap.yaml"     # Version milestones
+    - ".asimov/sprint.yaml"      # Current sprint status
 
 identity:
   project: "COBOL Banking System"
   tagline: "Legacy mainframe modernization demo"
-  version: "0.1.0"
+  version: "0.3.0"
 
 mission:
   problem: "Billions of lines of COBOL still run critical financial infrastructure"
@@ -15,35 +27,18 @@ mission:
     - "Incremental migration - one module at a time"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# ETHICS - Humanist Mode (HIGHEST PRIORITY)
+# ENVIRONMENT
 # ═══════════════════════════════════════════════════════════════════════════════
-# See: ethics.yaml for full configuration
-ethics:
-  status: "REQUIRED"
-  principles:
-    do_no_harm:
-      financial: true   # Critical: banking system
-      physical: true
-      privacy: true     # Customer data
-      deception: true
-    transparency_over_velocity: true
-  human_veto: "human vetoes this session"
-  motto: "Build tools that help. Never tools that harm."
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# GREEN CODING - Zero tokens. Zero emissions.
-# ═══════════════════════════════════════════════════════════════════════════════
-green_coding:
-  philosophy: "Local-first tools over cloud AI for routine tasks"
-  practices:
-    - "Use CLI tools for validation, linting, formatting"
-    - "Reserve AI for complex reasoning tasks"
-    - "Prefer compiled languages or efficient runtimes"
-    - "Minimize dependencies and binary sizes"
-  why:
-    - "Local validation: $0 and ~0.002g CO₂"
-    - "Cloud AI validation: $0.02+ and ~0.5g CO₂"
-    - "99.6% carbon reduction with local tools"
+environment:
+  java:
+    version: "17"
+    note: "Java 17 is the system default (openjdk@17 via Homebrew)"
+  gradle:
+    version: "8.5"
+    command: "./gradlew"
+  plantuml:
+    server: "https://plantuml.crypto1.ca"
+    note: "Use remote server for diagrams (no local plantuml installed)"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # MIGRATION CONTEXT
@@ -55,55 +50,46 @@ migration:
     structure: "PROCEDURE DIVISION / WORKING-STORAGE"
   target:
     language: "Java 17"
-    framework: "Spring Boot"
+    framework: "Spring Boot 3.x"
     storage: "H2/JPA"
     structure: "Service classes / Domain models"
 
 files:
-  source:
+  cobol:
     - "BANKACCT.cob - Main COBOL program (banking logic)"
     - "CUSTOMERS.DAT - Customer account records"
     - "TRANSACTIONS.DAT - Transaction audit log"
+  java:
+    - "java-banking/src/main/java/com/royalbit/banking/"
+    - "java-banking/src/test/java/com/royalbit/banking/"
   scripts:
     - "setup.sh - Environment setup"
     - "run.sh - Compile and execute COBOL"
-  docs:
-    - "README.md - Project documentation"
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# COBOL FEATURES TO MIGRATE
+# ═══════════════════════════════════════════════════════════════════════════════
 features:
-  core:
+  implemented:
     - "Account Management: Create accounts with unique IDs"
     - "Account Viewing: Display all accounts with status"
     - "Deposits/Withdrawals: With balance validation"
     - "Account Status: Soft delete (mark inactive)"
-  advanced:
     - "Transaction Logging: Complete audit trail"
     - "Mini Statements: Last 5 transactions"
     - "Interest Calculation: 2% annual for savings"
-    - "Data Validation: Overdraft prevention"
+  remaining:
+    - "REST API endpoints (v1.0.0)"
+    - "Database migration to PostgreSQL (v1.0.0)"
 
-session:
-  start:
-    - "Read .asimov/warmup.yaml"
-    - "Read .asimov/sprint.yaml"
-    - "git status"
-  during:
-    - "Track progress in sprint.yaml"
-    - "Test frequently - prove equivalence"
-    - "One module at a time"
-  end:
-    - "All tests pass"
-    - "Update roadmap.yaml"
-
+# ═══════════════════════════════════════════════════════════════════════════════
+# QUALITY STANDARDS
+# ═══════════════════════════════════════════════════════════════════════════════
 quality:
-  tests: "Behavioral equivalence tests must pass"
-  lint: "Java: checkstyle, COBOL: syntax validation"
-  coverage: "Critical paths: deposits, withdrawals, interest"
-
-style:
-  code:
-    - "Java: Google Java Style Guide"
-    - "COBOL: Traditional mainframe conventions"
-  docs:
-    - "Keep documentation concise"
-    - "Document migration decisions in ADRs"
+  tests:
+    command: "./gradlew test"
+    requirement: "All tests must pass before release"
+    current: "74 tests"
+  style:
+    java: "Google Java Style Guide"
+    cobol: "Traditional mainframe conventions"
