@@ -4,7 +4,7 @@
 sprint:
   current: "v0.3.0 - Transaction logging & statements"
   started: "2025-12-01"
-  status: completed
+  status: done
 
   tasks:
     - "[x] Analyze COBOL MINI-STATEMENT behavior"

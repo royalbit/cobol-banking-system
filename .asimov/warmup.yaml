@@ -86,10 +86,5 @@ features:
 # QUALITY STANDARDS
 # ═══════════════════════════════════════════════════════════════════════════════
 quality:
-  tests:
-    command: "./gradlew test"
-    requirement: "All tests must pass before release"
-    current: "74 tests"
-  style:
-    java: "Google Java Style Guide"
-    cobol: "Traditional mainframe conventions"
+  tests: "./gradlew test (74 tests, all must pass)"
+  style: "Java: Google Style Guide, COBOL: Traditional mainframe"
