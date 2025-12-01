@@ -2,42 +2,36 @@
 # https://github.com/royalbit/asimov-protocol
 
 sprint:
-  current: "v0.4.0 - REST API endpoints"
+  current: "v1.0.0 - Production Release"
   started: "2025-12-01"
   status: done
 
   tasks:
-    - "[x] Add Spring Boot Web & Validation dependencies"
-    - "[x] Add OpenAPI/Swagger (springdoc-openapi)"
-    - "[x] Create DTOs (CreateAccountRequest, TransactionRequest, etc.)"
-    - "[x] AccountController - CRUD, deposit, withdraw, apply-interest"
-    - "[x] TransactionController - history, mini-statement"
-    - "[x] Global exception handler"
-    - "[x] Integration tests (AccountControllerTest, TransactionControllerTest)"
-    - "[x] JaCoCo coverage (80% minimum)"
-    - "[x] All 96 tests passing"
+    - "[x] v0.4.0: REST API endpoints with OpenAPI"
+    - "[x] v0.5.0: Vue 3 + Tailwind CSS frontend"
+    - "[x] v0.5.0: Vitest component tests (29 tests)"
+    - "[x] v0.5.0: Playwright E2E tests (14 tests)"
+    - "[x] v1.0.0: Docker containerization"
+    - "[x] v1.0.0: Nginx reverse proxy config"
+    - "[x] v1.0.0: Demo data seeding"
+    - "[x] v1.0.0: Updated README & docs"
 
   blockers: []
 
   notes: |
-    Milestone v0.4.0 complete. REST API endpoints implemented:
+    COBOL Banking System migration complete!
 
-    Endpoints:
-    - GET    /api/accounts              - List all accounts
-    - GET    /api/accounts/{id}         - Get account by ID
-    - POST   /api/accounts              - Create account
-    - POST   /api/accounts/{id}/deposit - Deposit money
-    - POST   /api/accounts/{id}/withdraw - Withdraw money
-    - DELETE /api/accounts/{id}         - Soft delete account
-    - POST   /api/accounts/apply-interest - Apply interest
-    - GET    /api/accounts/{id}/transactions - Transaction history
-    - GET    /api/accounts/{id}/transactions/mini-statement - Last 5
+    v1.0.0 Production Release:
+    - Full-stack banking application
+    - Java 17 + Spring Boot 3.x backend
+    - Vue 3 + Vite + Tailwind CSS v4 frontend
+    - Docker containerization with docker-compose
+    - 139 total tests passing
 
-    Swagger UI: http://localhost:8080/swagger-ui.html
+    Quick Start:
+    docker-compose up --build
+    - Frontend: http://localhost:3000
+    - Backend: http://localhost:8080/api
+    - Swagger: http://localhost:8080/swagger-ui.html
 
-    Test coverage:
-    - 22 new controller integration tests
-    - Total: 96 tests passing (was 74)
-    - JaCoCo 80% coverage verified
-
-    Ready for v0.5.0: Vue 3 + Tailwind UI.
+    Roadmap complete. Project ready for production.
