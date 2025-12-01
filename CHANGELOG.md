@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2024-12-01
+
+### Added
+- Full user journey E2E tests (create → deposit → withdraw → statements)
+- Error handling E2E scenarios (insufficient funds, validation errors)
+- Responsive/mobile viewport E2E tests (iPhone, iPad, Desktop)
+- 22 new Playwright E2E tests (36 total, up from 14)
+
+### Changed
+- Total E2E test count: 14 → 36
+
 ## [1.3.0] - 2024-12-01
 
 ### Added

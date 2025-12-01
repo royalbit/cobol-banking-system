@@ -9,15 +9,15 @@
 # RULE: Commit and push after every version is completed
 
 current:
-  version: "1.3.0"
+  version: "1.4.0"
   status: released
-  summary: "Frontend-API Integration & OpenAPI"
-  goal: "INTEGRATION"
+  summary: "Enhanced E2E Testing"
+  goal: "QUALITY"
   deliverables:
-    - "[x] OpenAPI spec file (openapi.yaml)"
-    - "[x] Postman collection for API testing"
-    - "[x] API documentation updates"
-    - "[x] Swagger UI integration verified"
+    - "[x] Full user journey tests (create account → transactions → statements)"
+    - "[x] Error handling scenarios (insufficient funds, validation)"
+    - "[x] Responsive/mobile viewport tests"
+    - "[x] 36 E2E tests total (22 new tests)"
 
 completed:
   - version: "0.1.0"
@@ -95,14 +95,14 @@ completed:
       - "[x] CHANGELOG.md"
       - "[x] CONTRIBUTING.md"
 
-next:
-  - version: "1.4.0"
-    summary: "Enhanced E2E Testing"
-    goal: "QUALITY"
+  - version: "1.3.0"
+    summary: "Frontend-API Integration & OpenAPI"
     deliverables:
-      - "Full user journey tests (create account → transactions → statements)"
-      - "Error handling scenarios"
-      - "Responsive/mobile viewport tests"
+      - "[x] OpenAPI spec file (openapi.yaml)"
+      - "[x] Postman collection for API testing"
+      - "[x] API documentation updates"
+
+next: []
 
 backlog:
   - "Authentication & authorization (JWT)"

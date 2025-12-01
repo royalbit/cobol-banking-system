@@ -2,36 +2,34 @@
 # https://github.com/royalbit/asimov-protocol
 
 sprint:
-  current: "v1.0.0 - Production Release"
+  current: "v1.4.0 - Enhanced E2E Testing"
   started: "2025-12-01"
   status: done
 
   tasks:
-    - "[x] v0.4.0: REST API endpoints with OpenAPI"
-    - "[x] v0.5.0: Vue 3 + Tailwind CSS frontend"
-    - "[x] v0.5.0: Vitest component tests (29 tests)"
-    - "[x] v0.5.0: Playwright E2E tests (14 tests)"
-    - "[x] v1.0.0: Docker containerization"
-    - "[x] v1.0.0: Nginx reverse proxy config"
-    - "[x] v1.0.0: Demo data seeding"
-    - "[x] v1.0.0: Updated README & docs"
+    - "[x] Full user journey tests (create account → transactions → statements)"
+    - "[x] Error handling scenarios (insufficient funds, invalid input)"
+    - "[x] Responsive/mobile viewport tests"
 
   blockers: []
 
   notes: |
-    COBOL Banking System migration complete!
+    v1.4.0 Complete - Enhanced E2E Testing
 
-    v1.0.0 Production Release:
-    - Full-stack banking application
-    - Java 17 + Spring Boot 3.x backend
-    - Vue 3 + Vite + Tailwind CSS v4 frontend
-    - Docker containerization with docker-compose
-    - 139 total tests passing
+    New E2E test files:
+    - user-journeys.spec.js (12 tests)
+    - responsive.spec.js (10 tests)
 
-    Quick Start:
-    docker-compose up --build
-    - Frontend: http://localhost:3000
-    - Backend: http://localhost:8080/api
-    - Swagger: http://localhost:8080/swagger-ui.html
+    Test coverage:
+    - Full user journey: account creation to statement viewing
+    - Error handling: insufficient funds, validation, network errors
+    - Responsive: iPhone 12, iPad, Desktop (1280px, 1920px)
 
-    Roadmap complete. Project ready for production.
+    Test counts:
+    - Backend: 96 tests
+    - Frontend component: 29 tests
+    - E2E: 36 tests (was 14)
+    - Total: 161 tests
+
+    Roadmap complete through v1.4.0.
+    Backlog items available for future development.

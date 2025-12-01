@@ -16,7 +16,7 @@ protocols:
 identity:
   project: "Java Banking System"
   tagline: "Full-stack banking demo with Spring Boot + Vue 3"
-  version: "1.3.0"
+  version: "1.4.0"
 
 mission:
   problem: "Demonstrating modern full-stack development patterns"
@@ -93,6 +93,6 @@ features:
 quality:
   backend: "./gradlew test (96 tests, 80%+ coverage)"
   frontend: "npm test (29 component tests)"
-  e2e: "npm run test:e2e (14 Playwright tests)"
-  total: "139 tests"
+  e2e: "npm run test:e2e (36 Playwright tests)"
+  total: "161 tests"
   style: "Java: Google Style Guide, Vue: Composition API"
