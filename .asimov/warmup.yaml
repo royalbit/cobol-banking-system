@@ -14,17 +14,17 @@ protocols:
     - ".asimov/sprint.yaml"      # Current sprint status
 
 identity:
-  project: "COBOL Banking System"
-  tagline: "Legacy mainframe modernization demo"
-  version: "0.3.0"
+  project: "Java Banking System"
+  tagline: "Full-stack banking demo with Spring Boot + Vue 3"
+  version: "1.2.0"
 
 mission:
-  problem: "Billions of lines of COBOL still run critical financial infrastructure"
-  solution: "AI-assisted migration from COBOL to Java Spring Boot with behavioral equivalence"
+  problem: "Demonstrating modern full-stack development patterns"
+  solution: "Spring Boot + Vue 3 + Tailwind CSS with comprehensive testing"
   principles:
-    - "Preserve exact business logic during migration"
-    - "Test-driven: prove equivalence through comprehensive testing"
-    - "Incremental migration - one module at a time"
+    - "Test-driven: 139 tests across backend, component, and E2E"
+    - "Documentation-first: C4 diagrams, ADRs, guides"
+    - "Container-ready: Docker Compose deployment"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # ENVIRONMENT
@@ -41,50 +41,58 @@ environment:
     note: "Use remote server for diagrams (no local plantuml installed)"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# MIGRATION CONTEXT
+# PROJECT STRUCTURE
 # ═══════════════════════════════════════════════════════════════════════════════
-migration:
-  source:
-    language: "COBOL (GnuCOBOL)"
-    storage: "Flat files (.DAT)"
-    structure: "PROCEDURE DIVISION / WORKING-STORAGE"
-  target:
+structure:
+  backend:
+    path: "java-banking/"
     language: "Java 17"
     framework: "Spring Boot 3.x"
-    storage: "H2/JPA"
-    structure: "Service classes / Domain models"
+    database: "H2 (in-memory)"
+  frontend:
+    path: "frontend/"
+    framework: "Vue 3 + Vite"
+    styling: "Tailwind CSS v4"
+  docs:
+    path: "docs/"
+    architecture: "C4 Model diagrams"
+    decisions: "ADRs"
 
 files:
-  cobol:
-    - "BANKACCT.cob - Main COBOL program (banking logic)"
-    - "CUSTOMERS.DAT - Customer account records"
-    - "TRANSACTIONS.DAT - Transaction audit log"
-  java:
+  backend:
     - "java-banking/src/main/java/com/royalbit/banking/"
     - "java-banking/src/test/java/com/royalbit/banking/"
-  scripts:
-    - "setup.sh - Environment setup"
-    - "run.sh - Compile and execute COBOL"
+  frontend:
+    - "frontend/src/components/"
+    - "frontend/e2e/"
+  docs:
+    - "docs/architecture/ - C4 diagrams"
+    - "docs/adr/ - Architecture decisions"
+    - "docs/guides/ - Installation, development"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# COBOL FEATURES TO MIGRATE
+# FEATURES
 # ═══════════════════════════════════════════════════════════════════════════════
 features:
-  implemented:
-    - "Account Management: Create accounts with unique IDs"
-    - "Account Viewing: Display all accounts with status"
-    - "Deposits/Withdrawals: With balance validation"
-    - "Account Status: Soft delete (mark inactive)"
-    - "Transaction Logging: Complete audit trail"
+  core:
+    - "Account Management: Create, view, close accounts"
+    - "Transactions: Deposit, withdraw with validation"
+    - "Interest: 2% annual for savings accounts"
     - "Mini Statements: Last 5 transactions"
-    - "Interest Calculation: 2% annual for savings"
-  remaining:
-    - "REST API endpoints (v1.0.0)"
-    - "Database migration to PostgreSQL (v1.0.0)"
+    - "Audit Trail: Complete transaction history"
+  api:
+    - "REST endpoints with OpenAPI/Swagger"
+    - "Spring Boot Actuator health checks"
+  ui:
+    - "Vue 3 dashboard with Tailwind CSS"
+    - "Account detail with transaction forms"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # QUALITY STANDARDS
 # ═══════════════════════════════════════════════════════════════════════════════
 quality:
-  tests: "./gradlew test (74 tests, all must pass)"
-  style: "Java: Google Style Guide, COBOL: Traditional mainframe"
+  backend: "./gradlew test (96 tests, 80%+ coverage)"
+  frontend: "npm test (29 component tests)"
+  e2e: "npm run test:e2e (14 Playwright tests)"
+  total: "139 tests"
+  style: "Java: Google Style Guide, Vue: Composition API"

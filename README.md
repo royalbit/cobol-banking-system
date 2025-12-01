@@ -1,24 +1,15 @@
-# COBOL Banking System - Migration Demo
+# Java Banking System
 
-**Goal: Migrate COBOL to Java Spring Boot using AI-assisted development (RoyalBit Asimov)**
+[![CI](https://github.com/royalbit/cobol-banking-system/actions/workflows/ci.yml/badge.svg)](https://github.com/royalbit/cobol-banking-system/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This project demonstrates legacy mainframe modernization - taking a traditional COBOL banking system and migrating it to modern Java Spring Boot while preserving exact business logic.
+> 🤖 **RoyalBit Asimov** | Claude (Opus 4.5) - Principal Autonomous AI
+>
+> A full-stack banking demo built with [RoyalBit Asimov](https://github.com/royalbit/asimov). 139 tests. Zero hallucinations.
 
-## Migration Overview
+**A modern full-stack banking application** demonstrating Spring Boot + Vue 3 + Tailwind CSS with comprehensive testing and Docker deployment.
 
-| Source | Target |
-|--------|--------|
-| COBOL (GnuCOBOL) | Java 17 + Spring Boot 3.x |
-| Flat files (.DAT) | H2 Database + JPA |
-| PROCEDURE DIVISION | Service classes |
-| WORKING-STORAGE | Domain models |
-| Console UI | Vue 3 + Tailwind CSS |
-
-**Why this matters:** Billions of lines of COBOL still run critical financial infrastructure. This demo shows how AI can accelerate legacy modernization while ensuring behavioral equivalence through testing.
-
-## Quick Start (Docker)
-
-The fastest way to run the complete system:
+## Quick Start
 
 ```bash
 # Clone and start
@@ -27,76 +18,31 @@ cd cobol-banking-system
 docker-compose up --build
 
 # Access the application
-# Frontend: http://localhost:3000
-# Backend API: http://localhost:8080/api
+# Frontend:   http://localhost:3000
+# Backend:    http://localhost:8080/api
 # Swagger UI: http://localhost:8080/swagger-ui.html
-```
-
-## Development Setup
-
-### Backend (Java Spring Boot)
-
-```bash
-cd java-banking
-./gradlew bootRun
-# API available at http://localhost:8080
-```
-
-### Frontend (Vue 3)
-
-```bash
-cd frontend
-npm install
-npm run dev
-# UI available at http://localhost:3000
 ```
 
 ## Features
 
-### Core Banking Operations
-- **Account Management**: Create new customer accounts with unique IDs
-- **Account Viewing**: Display all customer accounts with status information
-- **Money Transactions**: Deposit and withdraw funds with balance validation
-- **Account Status**: Mark accounts as inactive (soft delete)
+| Feature | Description |
+|---------|-------------|
+| **Account Management** | Create, view, close accounts |
+| **Transactions** | Deposit, withdraw with validation |
+| **Interest** | 2% annual interest for savings |
+| **Mini Statements** | Last 5 transactions |
+| **Audit Trail** | Complete transaction history |
 
-### Advanced Features
-- **Transaction Logging**: Complete audit trail of all banking operations
-- **Mini Statements**: View last 5 transactions for any account
-- **Interest Calculation**: Automatic 2% annual interest for savings accounts
-- **Data Validation**: Prevents overdrafts and transactions on inactive accounts
+## Technology Stack
 
-### Transaction Types
-- **DEPOSIT**: Deposits
-- **WITHDRAWAL**: Withdrawals
-- **INTEREST**: Interest payments
-
-## Architecture
-
-### Technology Stack
-| Component | Technology |
-|-----------|------------|
+| Layer | Technology |
+|-------|------------|
 | Backend | Java 17, Spring Boot 3.x, JPA/Hibernate |
-| Database | H2 (in-memory, upgradeable to PostgreSQL) |
 | Frontend | Vue 3, Vite, Tailwind CSS v4 |
+| Database | H2 (in-memory) |
 | API Docs | OpenAPI 3.0 / Swagger UI |
-| Testing | JUnit 5, Vitest, Playwright |
-| Container | Docker, docker-compose |
-
-### Project Structure
-```
-cobol-banking-system/
-├── java-banking/           # Spring Boot backend
-│   ├── src/main/java/      # Java source code
-│   ├── src/test/java/      # Unit & integration tests
-│   └── Dockerfile          # Backend container
-├── frontend/               # Vue 3 frontend
-│   ├── src/                # Vue components
-│   ├── e2e/                # Playwright E2E tests
-│   └── Dockerfile          # Frontend container
-├── cobol-legacy/           # Original COBOL source
-├── docker-compose.yml      # Container orchestration
-└── .asimov/                # RoyalBit Asimov protocol
-```
+| Testing | JUnit 5 (96), Vitest (29), Playwright (14) |
+| Container | Docker, docker-compose, Nginx |
 
 ## API Endpoints
 
@@ -104,12 +50,11 @@ cobol-banking-system/
 |--------|----------|-------------|
 | GET | `/api/accounts` | List all accounts |
 | GET | `/api/accounts/{id}` | Get account by ID |
-| POST | `/api/accounts` | Create new account |
+| POST | `/api/accounts` | Create account |
 | DELETE | `/api/accounts/{id}` | Close account |
 | POST | `/api/accounts/{id}/deposit` | Deposit funds |
 | POST | `/api/accounts/{id}/withdraw` | Withdraw funds |
 | POST | `/api/accounts/apply-interest` | Apply 2% interest |
-| GET | `/api/accounts/{id}/transactions` | Transaction history |
 | GET | `/api/accounts/{id}/transactions/mini-statement` | Last 5 transactions |
 
 ## Documentation
@@ -122,113 +67,61 @@ cobol-banking-system/
 | [Development](docs/guides/development.md) | Development workflow |
 | [API Reference](docs/api/README.md) | REST API documentation |
 
-## Testing
-
-```bash
-# Backend tests (96 tests, 80%+ coverage)
-cd java-banking
-./gradlew test jacocoTestReport
-
-# Frontend component tests (29 tests)
-cd frontend
-npm test
-
-# Frontend E2E tests (14 tests)
-cd frontend
-npm run test:e2e
-```
-
-## Usage Guide
-
-### Menu Options
-1. **Create New Account**: Add new customer with account details
-2. **View All Accounts**: Display all accounts with status
-3. **Deposit Money**: Add funds to existing accounts
-4. **Withdraw Money**: Remove funds (with balance validation)
-5. **Mini Statement**: View recent transaction history
-6. **Apply Interest**: Calculate 2% interest for savings accounts
-7. **Delete Account**: Mark account as inactive
-8. **Exit System**: Close the application
-
-### Sample Workflow
-```
-1. Create a new savings account
-2. Make some deposits and withdrawals
-3. View mini statement to see transaction history
-4. Apply interest to earn 2% on savings
-5. View all accounts to see updated balances
-```
-
-## Data Format
-
-### Customer Records
-```
-Field        | Position | Length | Description
--------------|----------|--------|------------------
-Account ID   | 1-10     | 10     | Unique identifier
-Customer Name| 11-40    | 30     | Full name
-Balance      | 41-49    | 9      | Account balance
-Account Type | 50       | 1      | S=Savings, C=Checking
-Status       | 51       | 1      | A=Active, I=Inactive
-```
-
-### Transaction Records
-```
-Field        | Position | Length | Description
--------------|----------|--------|------------------
-Account ID   | 1-10     | 10     | Account identifier
-Trans Type   | 11       | 1      | D/W/I/X (Dep/Wth/Int/Del)
-Amount       | 12-20    | 9      | Transaction amount
-Date         | 21-30    | 10     | YYYY/MM/DD format
-Time         | 31-38    | 8      | HH:MM:SS format
-```
-
-## Technical Details
-
-### COBOL Simulation
-This project uses a Python-based COBOL simulator instead of native GnuCOBOL due to Replit environment limitations. The simulator:
-- Mimics traditional COBOL file handling patterns
-- Implements sequential file organization
-- Maintains COBOL-style data structures and operations
-
-### Error Handling
-- Account not found validation
-- Insufficient funds prevention
-- Inactive account transaction blocking
-- Invalid input data validation
-
-### Data Persistence
-All data is stored in flat files and persists across program restarts, simulating traditional mainframe data storage patterns.
-
 ## Development
 
-### Project Structure
-The banking system follows traditional COBOL program organization:
-- **Identification Division**: Program metadata
-- **Environment Division**: File control setup
-- **Data Division**: Record layouts and variables
-- **Procedure Division**: Business logic implementation
+```bash
+# Backend
+cd java-banking
+./gradlew bootRun              # Start server
+./gradlew test                 # Run tests (96 tests)
 
-### Extending the System
-To add new features:
-1. Update the menu system in the main loop
-2. Implement new functions following existing patterns
-3. Add appropriate error handling and validation
-4. Update transaction logging if needed
+# Frontend
+cd frontend
+npm install && npm run dev     # Start dev server
+npm test                       # Run tests (29 tests)
+npm run test:e2e               # E2E tests (14 tests)
+```
+
+## Project Structure
+
+```
+java-banking-system/
+├── java-banking/           # Spring Boot backend
+│   ├── src/main/java/      # Java source
+│   ├── src/test/java/      # Tests
+│   └── Dockerfile
+├── frontend/               # Vue 3 frontend
+│   ├── src/                # Vue components
+│   ├── e2e/                # Playwright tests
+│   └── Dockerfile
+├── docs/                   # Documentation
+│   ├── architecture/       # C4 diagrams
+│   ├── adr/                # Decision records
+│   └── guides/             # Guides
+└── docker-compose.yml
+```
+
+## Built by AI, Powered by the RoyalBit Asimov
+
+**Claude (Opus 4.5) - Principal Autonomous AI**
+
+This project was built autonomously using [**RoyalBit Asimov**](https://github.com/royalbit/asimov), a protocol for AI-driven software development with file-based truth and ethical constraints.
+
+| Version | Features |
+|---------|----------|
+| v0.1.0-v0.3.0 | Domain models, banking operations, transactions |
+| v0.4.0 | REST API + OpenAPI |
+| v0.5.0 | Vue 3 + Tailwind frontend |
+| v1.0.0 | Docker containerization |
+| v1.1.0 | Documentation & C4 architecture |
+
+**139 tests, 4 ADRs, zero warnings.**
 
 ## Contributing (AI-Only Development)
 
 **Pull Requests are disabled.** This is intentional.
 
-This project uses the **AI-Only Development Model** ([ADR-011](https://github.com/royalbit/asimov-protocol/blob/main/docs/adr/011-ai-only-development-no-external-prs.md)).
-
-External PRs are an **attack vector for ethics bypass**. The trust model is:
-
-```
-Human Owner → AI (autonomous) → Tests Pass → Direct Commit → Main
-```
-
-### How to Contribute
+This project uses the **AI-Only Development Model** ([ADR-011](https://github.com/royalbit/asimov/blob/main/docs/adr/011-ai-only-development-no-external-prs.md)).
 
 | Method | Description |
 |--------|-------------|
@@ -239,14 +132,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## Acknowledgments
-
-- Built using GnuCOBOL concepts and traditional mainframe banking patterns
-- Designed for educational purposes and COBOL learning
-- Demonstrates file-based data persistence in banking applications
-
----
-
-**Note**: This is a simulation for educational purposes. Not intended for production banking use.
+MIT - See [LICENSE](LICENSE)
