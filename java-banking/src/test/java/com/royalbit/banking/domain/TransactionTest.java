@@ -48,6 +48,45 @@ class TransactionTest {
             assertEquals(TransactionType.DELETE, TransactionType.fromCode('X'));
             assertEquals('X', TransactionType.DELETE.getCode());
         }
+
+        @Test
+        @DisplayName("should throw on unknown type code")
+        void unknownTypeCode() {
+            assertThrows(IllegalArgumentException.class, () -> TransactionType.fromCode('Z'));
+        }
+    }
+
+    @Nested
+    @DisplayName("Display Labels (COBOL Mini Statement Format)")
+    class DisplayLabels {
+
+        @Test
+        @DisplayName("DEPOSIT should display as DEP")
+        void depositLabel() {
+            // COBOL: DISPLAY "DEP" for deposit transactions
+            assertEquals("DEP", TransactionType.DEPOSIT.getDisplayLabel());
+        }
+
+        @Test
+        @DisplayName("WITHDRAWAL should display as WTH")
+        void withdrawalLabel() {
+            // COBOL: DISPLAY "WTH" for withdrawal transactions
+            assertEquals("WTH", TransactionType.WITHDRAWAL.getDisplayLabel());
+        }
+
+        @Test
+        @DisplayName("INTEREST should display as INT")
+        void interestLabel() {
+            // COBOL: Interest transactions in mini statement
+            assertEquals("INT", TransactionType.INTEREST.getDisplayLabel());
+        }
+
+        @Test
+        @DisplayName("DELETE should display as DEL")
+        void deleteLabel() {
+            // COBOL: Delete transactions in audit trail
+            assertEquals("DEL", TransactionType.DELETE.getDisplayLabel());
+        }
     }
 
     @Nested

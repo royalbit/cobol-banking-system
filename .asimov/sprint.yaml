@@ -2,41 +2,42 @@
 # https://github.com/royalbit/asimov-protocol
 
 sprint:
-  current: "v0.2.0 - Core banking operations"
+  current: "v0.3.0 - Transaction logging & statements"
   started: "2025-12-01"
   status: completed
 
   tasks:
-    - "[x] Create BankingService with core operations"
-    - "[x] Implement account CRUD (create, view, soft delete)"
-    - "[x] Implement deposit with active account validation"
-    - "[x] Implement withdrawal with overdraft prevention"
-    - "[x] Add transaction logging (D/W/I/X types)"
-    - "[x] Apply interest to savings accounts (2%)"
-    - "[x] Write equivalence tests vs COBOL behavior"
-    - "[x] All 60 tests passing"
+    - "[x] Analyze COBOL MINI-STATEMENT behavior"
+    - "[x] Implement getMiniStatement() - last 5 transactions"
+    - "[x] Implement getTransactionHistory() - full audit trail"
+    - "[x] Add COBOL-style display labels (DEP/WTH/INT/DEL)"
+    - "[x] Date/time formatting verified (YYYY/MM/DD, HH:MM:SS)"
+    - "[x] Write 14 new equivalence tests"
+    - "[x] All 74 tests passing"
 
   blockers: []
 
   notes: |
-    Milestone v0.2.0 complete. BankingService implements all COBOL operations:
+    Milestone v0.3.0 complete. Transaction logging & mini statements implemented:
 
     COBOL → Java mapping:
-    - CREATE-ACCOUNT → createAccount()
-    - VIEW-ACCOUNTS → getAllAccounts()
-    - DEPOSIT-MONEY → deposit() + logTransaction(DEPOSIT)
-    - WITHDRAW-MONEY → withdraw() + logTransaction(WITHDRAWAL)
-    - APPLY-INTEREST → applyInterest() + logTransaction(INTEREST)
-    - DELETE (soft) → deleteAccount() + logTransaction(DELETE)
+    - MINI-STATEMENT → getMiniStatement() (last 5 transactions)
+    - Transaction audit trail → getTransactionHistory()
 
-    Validation matches COBOL:
-    - Overdraft prevention: IF BALANCE >= WS-AMOUNT
-    - Inactive account rejection
-    - Name padding to 30 chars (PIC X(30))
+    Display labels match COBOL output:
+    - D → DEP (Deposit)
+    - W → WTH (Withdrawal)
+    - I → INT (Interest)
+    - X → DEL (Delete)
+
+    Date/Time formatting (COBOL style):
+    - Date: YYYY/MM/DD (e.g., 2025/12/01)
+    - Time: HH:MM:SS (e.g., 14:13:32)
 
     Test coverage:
-    - 27 new service tests
-    - 33 domain/fixture tests
-    - Total: 60 tests passing
+    - 5 mini statement tests
+    - 4 transaction history tests
+    - 5 display label tests
+    - Total: 74 tests passing (was 60)
 
-    Ready for v0.3.0: Transaction logging & mini statements.
+    Ready for v0.4.0: Interest calculation & advanced features.

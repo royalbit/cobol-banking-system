@@ -386,4 +386,134 @@ class BankingServiceTest {
             assertTrue(formattedTime.matches("\\d{2}:\\d{2}:\\d{2}"));
         }
     }
+
+    @Nested
+    @DisplayName("MINI-STATEMENT (COBOL Option 5)")
+    class MiniStatement {
+
+        @BeforeEach
+        void setupAccountWithTransactions() {
+            bankingService.createAccount("MINI001", "Statement User", new BigDecimal("1000.00"), AccountType.SAVINGS);
+            // Create 7 transactions to test limit of 5
+            bankingService.deposit("MINI001", new BigDecimal("100.00"));
+            bankingService.deposit("MINI001", new BigDecimal("200.00"));
+            bankingService.withdraw("MINI001", new BigDecimal("50.00"));
+            bankingService.deposit("MINI001", new BigDecimal("300.00"));
+            bankingService.withdraw("MINI001", new BigDecimal("75.00"));
+            bankingService.deposit("MINI001", new BigDecimal("400.00"));
+            bankingService.deposit("MINI001", new BigDecimal("500.00"));
+        }
+
+        @Test
+        @DisplayName("should return maximum 5 transactions like COBOL")
+        void miniStatementLimitsFive() {
+            // COBOL: PERFORM UNTIL FILE-STATUS = "10" OR WS-STMT-COUNT >= 5
+            List<Transaction> statement = bankingService.getMiniStatement("MINI001");
+
+            assertEquals(5, statement.size());
+        }
+
+        @Test
+        @DisplayName("should return transactions newest first")
+        void miniStatementNewestFirst() {
+            // COBOL reads sequentially, Java sorts by date/time DESC
+            List<Transaction> statement = bankingService.getMiniStatement("MINI001");
+
+            // Last deposit was 500, should be first in mini statement
+            assertEquals(0, new BigDecimal("500.00").compareTo(statement.get(0).getAmount()));
+        }
+
+        @Test
+        @DisplayName("should return empty list for account with no transactions")
+        void miniStatementNoTransactions() {
+            bankingService.createAccount("MINI002", "New User", new BigDecimal("100.00"), AccountType.CHECKING);
+
+            List<Transaction> statement = bankingService.getMiniStatement("MINI002");
+
+            assertTrue(statement.isEmpty());
+        }
+
+        @Test
+        @DisplayName("should return all transactions if less than 5")
+        void miniStatementFewerThanFive() {
+            bankingService.createAccount("MINI003", "Light User", new BigDecimal("500.00"), AccountType.SAVINGS);
+            bankingService.deposit("MINI003", new BigDecimal("50.00"));
+            bankingService.withdraw("MINI003", new BigDecimal("25.00"));
+
+            List<Transaction> statement = bankingService.getMiniStatement("MINI003");
+
+            assertEquals(2, statement.size());
+        }
+
+        @Test
+        @DisplayName("should return empty for non-existent account")
+        void miniStatementNonExistentAccount() {
+            // COBOL: "No transactions found for this account."
+            List<Transaction> statement = bankingService.getMiniStatement("NOTEXIST");
+
+            assertTrue(statement.isEmpty());
+        }
+    }
+
+    @Nested
+    @DisplayName("Transaction History (Audit Trail)")
+    class TransactionHistory {
+
+        @BeforeEach
+        void setupAccountWithHistory() {
+            bankingService.createAccount("HIST001", "History User", new BigDecimal("500.00"), AccountType.SAVINGS);
+            bankingService.deposit("HIST001", new BigDecimal("100.00"));
+            bankingService.withdraw("HIST001", new BigDecimal("50.00"));
+            bankingService.deposit("HIST001", new BigDecimal("200.00"));
+        }
+
+        @Test
+        @DisplayName("should return all transactions for account")
+        void historyReturnsAllTransactions() {
+            // COBOL: Read all TRANSACTION-RECORD where TRANS-ACCT-ID matches
+            List<Transaction> history = bankingService.getTransactionHistory("HIST001");
+
+            assertEquals(3, history.size());
+        }
+
+        @Test
+        @DisplayName("should include all transaction types in history")
+        void historyIncludesAllTypes() {
+            List<Transaction> history = bankingService.getTransactionHistory("HIST001");
+
+            long deposits = history.stream()
+                    .filter(t -> t.getTransactionType() == TransactionType.DEPOSIT)
+                    .count();
+            long withdrawals = history.stream()
+                    .filter(t -> t.getTransactionType() == TransactionType.WITHDRAWAL)
+                    .count();
+
+            assertEquals(2, deposits);
+            assertEquals(1, withdrawals);
+        }
+
+        @Test
+        @DisplayName("should return empty for account with no transactions")
+        void historyEmpty() {
+            bankingService.createAccount("HIST002", "New Account", new BigDecimal("100.00"), AccountType.CHECKING);
+
+            List<Transaction> history = bankingService.getTransactionHistory("HIST002");
+
+            assertTrue(history.isEmpty());
+        }
+
+        @Test
+        @DisplayName("should only return transactions for specified account")
+        void historyAccountIsolation() {
+            // Create another account with transactions
+            bankingService.createAccount("HIST003", "Other User", new BigDecimal("1000.00"), AccountType.SAVINGS);
+            bankingService.deposit("HIST003", new BigDecimal("500.00"));
+
+            List<Transaction> history = bankingService.getTransactionHistory("HIST001");
+
+            // Should only have HIST001's 3 transactions, not HIST003's
+            assertEquals(3, history.size());
+            assertTrue(history.stream().allMatch(t -> t.getAccountId().equals("HIST001")));
+        }
+    }
 }

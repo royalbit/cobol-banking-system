@@ -6,33 +6,35 @@
 # See: CHANGELOG.md for release history
 
 current:
-  version: "0.1.0"
-  status: planned
-  summary: "Domain models & test fixtures"
-  goal: "FOUNDATION"
+  version: "0.3.0"
+  status: completed
+  summary: "Transaction logging & statements"
+  goal: "FEATURE_PARITY"
   deliverables:
-    - "[ ] Java project scaffold (Spring Boot 3.x, Java 17)"
-    - "[ ] Domain models: Account, Transaction, Customer"
-    - "[ ] Test fixtures from CUSTOMERS.DAT / TRANSACTIONS.DAT"
-    - "[ ] Equivalence test harness (compare COBOL vs Java output)"
+    - "[x] Transaction audit trail (getTransactionHistory)"
+    - "[x] Mini statements - last 5 transactions (getMiniStatement)"
+    - "[x] Date/time formatting (YYYY/MM/DD, HH:MM:SS)"
+    - "[x] Display labels (DEP/WTH/INT/DEL)"
+    - "[x] 74 tests passing"
 
-next:
+completed:
+  - version: "0.1.0"
+    summary: "Domain models & test fixtures"
+    deliverables:
+      - "[x] Java project scaffold (Spring Boot 3.x, Java 17)"
+      - "[x] Domain models: Account, Transaction"
+      - "[x] Test fixtures from CUSTOMERS.DAT / TRANSACTIONS.DAT"
+      - "[x] Equivalence test harness"
+
   - version: "0.2.0"
     summary: "Core banking operations"
-    goal: "FEATURE_PARITY"
     deliverables:
-      - "Account CRUD (create, view, soft delete)"
-      - "Deposit/Withdrawal with validation"
-      - "Pass equivalence tests vs COBOL"
+      - "[x] Account CRUD (create, view, soft delete)"
+      - "[x] Deposit/Withdrawal with validation"
+      - "[x] Interest application (2% for savings)"
+      - "[x] 60 equivalence tests passing"
 
-  - version: "0.3.0"
-    summary: "Transaction logging & statements"
-    goal: "FEATURE_PARITY"
-    deliverables:
-      - "Transaction audit trail"
-      - "Mini statements (last 5 transactions)"
-      - "Date/time formatting (COBOL style)"
-
+next:
   - version: "0.4.0"
     summary: "Interest calculation & advanced features"
     goal: "FEATURE_PARITY"

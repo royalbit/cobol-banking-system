@@ -6,6 +6,8 @@ import com.royalbit.banking.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.data.domain.PageRequest;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -180,6 +182,39 @@ public class BankingService {
         }
 
         return count;
+    }
+
+    /**
+     * Get mini statement - last 5 transactions (COBOL: MINI-STATEMENT).
+     *
+     * COBOL:
+     *   DISPLAY "Last 5 transactions for Account: " WS-SEARCH-ID
+     *   PERFORM UNTIL FILE-STATUS = "10" OR WS-STMT-COUNT >= 5
+     *     READ TRANSACTION-FILE
+     *     IF TRANS-ACCT-ID = WS-SEARCH-ID
+     *       ADD 1 TO WS-STMT-COUNT
+     *       DISPLAY TRANS-DATE " | " TRANS-TIME " | " TYPE " | $" TRANS-AMOUNT
+     *
+     * @param accountId Account ID to get statement for
+     * @return List of last 5 transactions, newest first
+     */
+    @Transactional(readOnly = true)
+    public List<Transaction> getMiniStatement(String accountId) {
+        return transactionRepository.findRecentByAccountId(accountId, PageRequest.of(0, 5));
+    }
+
+    /**
+     * Get full transaction history (audit trail) for an account.
+     *
+     * COBOL equivalent: Reading all records from TRANSACTION-FILE
+     * where TRANS-ACCT-ID matches.
+     *
+     * @param accountId Account ID to get history for
+     * @return List of all transactions for the account
+     */
+    @Transactional(readOnly = true)
+    public List<Transaction> getTransactionHistory(String accountId) {
+        return transactionRepository.findByAccountId(accountId);
     }
 
     /**
