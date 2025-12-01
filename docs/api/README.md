@@ -8,7 +8,16 @@
 ## Interactive Documentation
 
 - **Swagger UI**: http://localhost:8080/swagger-ui.html
-- **OpenAPI Spec**: http://localhost:8080/v3/api-docs
+- **OpenAPI Spec (live)**: http://localhost:8080/v3/api-docs
+- **OpenAPI Spec (file)**: [openapi.yaml](openapi.yaml)
+- **Postman Collection**: [postman-collection.json](postman-collection.json)
+
+### Import to Postman
+
+1. Open Postman
+2. Click **Import**
+3. Select `docs/api/postman-collection.json`
+4. Collection will appear with all endpoints ready to use
 
 ## Authentication
 

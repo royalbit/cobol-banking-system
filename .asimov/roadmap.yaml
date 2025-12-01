@@ -9,20 +9,15 @@
 # RULE: Commit and push after every version is completed
 
 current:
-  version: "1.2.0"
+  version: "1.3.0"
   status: released
-  summary: "Project Rebrand, Asimov Narrative & CI"
-  goal: "IDENTITY"
+  summary: "Frontend-API Integration & OpenAPI"
+  goal: "INTEGRATION"
   deliverables:
-    - "[x] README rebrand with Asimov narrative"
-    - "[x] Update warmup.yaml identity"
-    - "[x] GitHub Actions CI workflow"
-    - "[x] Backend CI: build, test, coverage"
-    - "[x] Frontend CI: build, test, e2e"
-    - "[x] Docker build verification"
-    - "[x] CI badges in README"
-    - "[x] CHANGELOG.md"
-    - "[x] CONTRIBUTING.md"
+    - "[x] OpenAPI spec file (openapi.yaml)"
+    - "[x] Postman collection for API testing"
+    - "[x] API documentation updates"
+    - "[x] Swagger UI integration verified"
 
 completed:
   - version: "0.1.0"
@@ -90,17 +85,17 @@ completed:
       - "[x] API documentation"
       - "[x] PlantUML → SVG diagrams"
 
-next:
-  - version: "1.3.0"
-    summary: "Frontend-API Integration & OpenAPI"
-    goal: "INTEGRATION"
+  - version: "1.2.0"
+    summary: "Project Rebrand, Asimov Narrative & CI"
     deliverables:
-      - "Verify frontend-backend integration end-to-end"
-      - "OpenAPI spec file (openapi.yaml)"
-      - "Swagger UI enhancements"
-      - "API documentation in docs/"
-      - "Postman/Insomnia collection"
+      - "[x] README rebrand with Asimov narrative"
+      - "[x] Update warmup.yaml identity"
+      - "[x] GitHub Actions CI workflow"
+      - "[x] CI badges in README"
+      - "[x] CHANGELOG.md"
+      - "[x] CONTRIBUTING.md"
 
+next:
   - version: "1.4.0"
     summary: "Enhanced E2E Testing"
     goal: "QUALITY"
