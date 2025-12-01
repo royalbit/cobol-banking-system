@@ -9,17 +9,19 @@
 # RULE: Commit and push after every version is completed
 
 current:
-  version: "1.0.0"
+  version: "1.1.0"
   status: released
-  summary: "Production-ready release"
-  goal: "PRODUCTION"
+  summary: "Documentation & Architecture"
+  goal: "DOCS"
   deliverables:
-    - "[x] Docker containerization (docker-compose)"
-    - "[x] Nginx reverse proxy for frontend"
-    - "[x] Health checks and actuator endpoints"
-    - "[x] Demo data seeding (5 sample accounts)"
-    - "[x] Updated README with quick start guide"
-    - "[x] 139 total tests (96 backend + 29 component + 14 E2E)"
+    - "[x] docs/ folder structure"
+    - "[x] C4 Model: Level 1 (Context diagram)"
+    - "[x] C4 Model: Level 2 (Container diagram)"
+    - "[x] C4 Model: Level 3 (Component diagrams)"
+    - "[x] ADRs (4 Architecture Decision Records)"
+    - "[x] Installation & development guides"
+    - "[x] API documentation"
+    - "[x] PlantUML → SVG diagrams"
 
 completed:
   - version: "0.1.0"
@@ -68,42 +70,31 @@ completed:
       - "[x] Component tests (Vitest) - 29 tests"
       - "[x] E2E tests (Playwright) - 14 tests"
 
-next:
-  - version: "1.1.0"
-    summary: "Documentation & Architecture"
-    goal: "DOCS"
+  - version: "1.0.0"
+    summary: "Production-ready release"
     deliverables:
-      - "docs/ folder structure"
-      - "C4 Model: Level 1 (Context diagram)"
-      - "C4 Model: Level 2 (Container diagram)"
-      - "C4 Model: Level 3 (Component diagrams - Backend, Frontend)"
-      - "ADRs (Architecture Decision Records)"
-      - "Installation & development guide"
-      - "API documentation with examples"
-      - "Link docs from README"
+      - "[x] Docker containerization (docker-compose)"
+      - "[x] Nginx reverse proxy for frontend"
+      - "[x] Health checks and actuator endpoints"
+      - "[x] Demo data seeding (5 sample accounts)"
+      - "[x] Updated README with quick start guide"
 
+next:
   - version: "1.2.0"
-    summary: "Project Rebrand & Asimov Narrative"
+    summary: "Project Rebrand, Asimov Narrative & CI"
     goal: "IDENTITY"
     deliverables:
       - "Update README with Asimov narrative (like forge)"
       - "Rebrand: Java Banking System (not 'migration')"
       - "Update warmup.yaml identity"
-      - "Add CI badges to README"
+      - "GitHub Actions workflow (.github/workflows/ci.yml)"
+      - "Backend CI: build, test, coverage"
+      - "Frontend CI: build, test, e2e"
+      - "CI badges in README"
       - "CHANGELOG.md"
       - "CONTRIBUTING.md"
 
   - version: "1.3.0"
-    summary: "GitHub CI Pipeline"
-    goal: "CI"
-    deliverables:
-      - "GitHub Actions workflow (.github/workflows/ci.yml)"
-      - "Backend: build, test, coverage"
-      - "Frontend: build, test, e2e"
-      - "Docker build verification"
-      - "Status badges in README"
-
-  - version: "1.4.0"
     summary: "Frontend-API Integration & OpenAPI"
     goal: "INTEGRATION"
     deliverables:
@@ -113,14 +104,13 @@ next:
       - "API documentation in docs/"
       - "Postman/Insomnia collection"
 
-  - version: "1.5.0"
+  - version: "1.4.0"
     summary: "Enhanced E2E Testing"
     goal: "QUALITY"
     deliverables:
       - "Full user journey tests (create account → transactions → statements)"
       - "Error handling scenarios"
       - "Responsive/mobile viewport tests"
-      - "Visual regression baseline (optional)"
 
 backlog:
   - "Authentication & authorization (JWT)"

@@ -1,0 +1,21 @@
+@startuml C4_Container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Container Diagram - Java Banking System
+
+Person(user, "User", "Bank customer or admin")
+
+System_Boundary(banking, "Java Banking System") {
+    Container(spa, "Single Page App", "Vue 3, Tailwind CSS", "Provides banking UI in the browser")
+    Container(nginx, "Web Server", "Nginx", "Serves static content and proxies API requests")
+    Container(api, "API Server", "Spring Boot 3.x, Java 17", "Handles business logic via REST API")
+    ContainerDb(db, "Database", "H2 In-Memory", "Stores accounts and transactions")
+}
+
+Rel(user, nginx, "HTTPS", "Port 3000")
+Rel(nginx, spa, "Serves", "Static files")
+Rel(nginx, api, "Proxies", "/api/*")
+Rel(spa, nginx, "API calls", "REST/JSON")
+Rel(api, db, "Reads/Writes", "JPA/Hibernate")
+
+@enduml

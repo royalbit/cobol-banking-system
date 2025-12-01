@@ -1,0 +1,17 @@
+@startuml C4_Context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title System Context Diagram - Java Banking System
+
+Person(user, "Bank Customer", "A user who manages their bank accounts")
+Person(admin, "Bank Admin", "Manages accounts and applies interest")
+
+System(banking, "Java Banking System", "Full-stack banking application for account management, deposits, withdrawals, and transaction history")
+
+System_Ext(browser, "Web Browser", "Chrome, Firefox, Safari, Edge")
+
+Rel(user, browser, "Uses")
+Rel(admin, browser, "Uses")
+Rel(browser, banking, "HTTPS", "REST API + Vue SPA")
+
+@enduml

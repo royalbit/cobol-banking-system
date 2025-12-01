@@ -1,0 +1,24 @@
+@startuml C4_Component_Frontend
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Component Diagram - Frontend (Vue 3)
+
+Container_Boundary(spa, "Single Page Application") {
+    Component(app, "App.vue", "Root Component", "Main layout, routing, state management")
+    Component(accountList, "AccountList.vue", "Component", "Displays account cards grid")
+    Component(accountDetail, "AccountDetail.vue", "Component", "Account info, transactions, deposit/withdraw")
+    Component(createModal, "CreateAccountModal.vue", "Component", "New account form")
+    Component(apiClient, "api/client.js", "API Client", "REST API communication layer")
+}
+
+Container_Ext(api, "Backend API", "Spring Boot")
+
+Rel(app, accountList, "Renders")
+Rel(app, accountDetail, "Renders")
+Rel(app, createModal, "Renders")
+Rel(accountList, apiClient, "Uses")
+Rel(accountDetail, apiClient, "Uses")
+Rel(createModal, apiClient, "Uses")
+Rel(apiClient, api, "HTTP/REST", "/api/*")
+
+@enduml

@@ -112,6 +112,16 @@ cobol-banking-system/
 | GET | `/api/accounts/{id}/transactions` | Transaction history |
 | GET | `/api/accounts/{id}/transactions/mini-statement` | Last 5 transactions |
 
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [Architecture](docs/architecture/README.md) | C4 diagrams (Context, Container, Component) |
+| [ADRs](docs/adr/README.md) | Architecture Decision Records |
+| [Installation](docs/guides/installation.md) | Setup and run locally |
+| [Development](docs/guides/development.md) | Development workflow |
+| [API Reference](docs/api/README.md) | REST API documentation |
+
 ## Testing
 
 ```bash

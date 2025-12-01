@@ -1,0 +1,27 @@
+@startuml C4_Component_Backend
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Component Diagram - Backend (Spring Boot)
+
+Container_Boundary(api, "API Server") {
+    Component(accountCtrl, "AccountController", "REST Controller", "Handles account CRUD, deposit, withdraw, interest")
+    Component(txCtrl, "TransactionController", "REST Controller", "Handles transaction history and mini-statements")
+    Component(bankingSvc, "BankingService", "Service", "Core banking business logic")
+    Component(accountRepo, "AccountRepository", "JPA Repository", "Account data access")
+    Component(txRepo, "TransactionRepository", "JPA Repository", "Transaction data access")
+    Component(exHandler, "GlobalExceptionHandler", "Controller Advice", "Error handling and validation")
+    Component(openapi, "OpenAPI Config", "Configuration", "Swagger/OpenAPI documentation")
+    Component(dataInit, "DataInitializer", "Configuration", "Demo data seeding")
+}
+
+ContainerDb(db, "H2 Database", "In-Memory", "Accounts & Transactions")
+
+Rel(accountCtrl, bankingSvc, "Uses")
+Rel(txCtrl, bankingSvc, "Uses")
+Rel(bankingSvc, accountRepo, "Uses")
+Rel(bankingSvc, txRepo, "Uses")
+Rel(accountRepo, db, "JPA")
+Rel(txRepo, db, "JPA")
+Rel(dataInit, bankingSvc, "Seeds data")
+
+@enduml
