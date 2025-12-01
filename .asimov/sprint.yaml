@@ -2,42 +2,42 @@
 # https://github.com/royalbit/asimov-protocol
 
 sprint:
-  current: "v0.3.0 - Transaction logging & statements"
+  current: "v0.4.0 - REST API endpoints"
   started: "2025-12-01"
   status: done
 
   tasks:
-    - "[x] Analyze COBOL MINI-STATEMENT behavior"
-    - "[x] Implement getMiniStatement() - last 5 transactions"
-    - "[x] Implement getTransactionHistory() - full audit trail"
-    - "[x] Add COBOL-style display labels (DEP/WTH/INT/DEL)"
-    - "[x] Date/time formatting verified (YYYY/MM/DD, HH:MM:SS)"
-    - "[x] Write 14 new equivalence tests"
-    - "[x] All 74 tests passing"
+    - "[x] Add Spring Boot Web & Validation dependencies"
+    - "[x] Add OpenAPI/Swagger (springdoc-openapi)"
+    - "[x] Create DTOs (CreateAccountRequest, TransactionRequest, etc.)"
+    - "[x] AccountController - CRUD, deposit, withdraw, apply-interest"
+    - "[x] TransactionController - history, mini-statement"
+    - "[x] Global exception handler"
+    - "[x] Integration tests (AccountControllerTest, TransactionControllerTest)"
+    - "[x] JaCoCo coverage (80% minimum)"
+    - "[x] All 96 tests passing"
 
   blockers: []
 
   notes: |
-    Milestone v0.3.0 complete. Transaction logging & mini statements implemented:
+    Milestone v0.4.0 complete. REST API endpoints implemented:
 
-    COBOL → Java mapping:
-    - MINI-STATEMENT → getMiniStatement() (last 5 transactions)
-    - Transaction audit trail → getTransactionHistory()
+    Endpoints:
+    - GET    /api/accounts              - List all accounts
+    - GET    /api/accounts/{id}         - Get account by ID
+    - POST   /api/accounts              - Create account
+    - POST   /api/accounts/{id}/deposit - Deposit money
+    - POST   /api/accounts/{id}/withdraw - Withdraw money
+    - DELETE /api/accounts/{id}         - Soft delete account
+    - POST   /api/accounts/apply-interest - Apply interest
+    - GET    /api/accounts/{id}/transactions - Transaction history
+    - GET    /api/accounts/{id}/transactions/mini-statement - Last 5
 
-    Display labels match COBOL output:
-    - D → DEP (Deposit)
-    - W → WTH (Withdrawal)
-    - I → INT (Interest)
-    - X → DEL (Delete)
-
-    Date/Time formatting (COBOL style):
-    - Date: YYYY/MM/DD (e.g., 2025/12/01)
-    - Time: HH:MM:SS (e.g., 14:13:32)
+    Swagger UI: http://localhost:8080/swagger-ui.html
 
     Test coverage:
-    - 5 mini statement tests
-    - 4 transaction history tests
-    - 5 display label tests
-    - Total: 74 tests passing (was 60)
+    - 22 new controller integration tests
+    - Total: 96 tests passing (was 74)
+    - JaCoCo 80% coverage verified
 
-    Ready for v0.4.0: Interest calculation & advanced features.
+    Ready for v0.5.0: Vue 3 + Tailwind UI.
