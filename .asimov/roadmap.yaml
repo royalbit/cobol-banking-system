@@ -45,6 +45,8 @@ next:
       - "Account endpoints (CRUD, deposit, withdraw)"
       - "Transaction endpoints (history, mini-statement)"
       - "OpenAPI/Swagger documentation"
+      - "Unit tests (80% coverage minimum)"
+      - "Integration tests (API endpoint testing)"
 
   - version: "0.5.0"
     summary: "Modern Web UI (Vue 3 + Tailwind)"
@@ -55,6 +57,8 @@ next:
       - "Transaction history with filtering"
       - "Deposit/Withdraw forms"
       - "Mini statement view"
+      - "Component tests (Vitest)"
+      - "E2E tests (Playwright)"
 
   - version: "1.0.0"
     summary: "Production-ready release"
