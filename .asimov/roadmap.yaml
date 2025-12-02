@@ -113,7 +113,7 @@ completed:
       - "[x] Responsive/mobile viewport tests"
       - "[x] 36 E2E tests total (22 new tests)"
 
-next:
+next: []
 
 backlog:
   - "Authentication & authorization (JWT)"
