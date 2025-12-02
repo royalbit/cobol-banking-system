@@ -32,3 +32,6 @@ Thumbs.db
 # Replit specific files (optional - remove if you want to include them)
 .replit
 replit.nix
+
+# RoyalBit Asimov checkpoint (session-specific)
+.claude_checkpoint.yaml
